@@ -1,0 +1,28 @@
+{
+  "generated_from": "data/processed/phase9b_weather.csv",
+  "note": "Explicit prepared copy for the browser dashboard. Original values, data_mode, is_mock and source information are preserved verbatim.",
+  "source_phase": "protected processed output (read-only)",
+  "rows": [
+    {
+      "location_id": "example_location",
+      "latitude": "13.0827",
+      "longitude": "80.2707",
+      "timestamp": "2026-09-16T11:15",
+      "temperature_c": "33.3",
+      "precipitation_mm": "0.0",
+      "weather_code": "0",
+      "weather_condition": "clear sky",
+      "wind_speed_kmh": "1.3",
+      "visibility_km": "24.6",
+      "humidity_pct": "56",
+      "source": "live",
+      "provider": "open-meteo",
+      "is_mock": "False",
+      "fallback_reason": "",
+      "weather_category": "CLEAR",
+      "weather_traffic_impact": "LOW",
+      "impact_score": "0",
+      "impact_rule_basis": "category 0 + rain 0 + wind 0 + visibility 0"
+    }
+  ]
+}

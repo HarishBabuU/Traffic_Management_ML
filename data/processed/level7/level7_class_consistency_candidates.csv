@@ -1,0 +1,13 @@
+video,track_id,class,class_stable,first_frame,last_frame,frames_tracked,class_agreement,class_agreement_stable,hysteresis_switches,reason,severity_tier
+low traffic.mp4,66,car,car,503,657,124,0.6797,0.6406,0,Raw class agreement 67.97% (< 90%). | Stabilized class agreement 64.06% (< 90%).,Tier1
+low traffic.mp4,90,truck,truck,652,740,83,0.6867,0.6747,3,Raw class agreement 68.67% (< 90%). | Stabilized class agreement 67.47% (< 90%). | 3 accepted class switch(es).,Tier1
+low traffic.mp4,76,car,car,568,606,28,0.75,0.7857,1,Raw class agreement 75.00% (< 90%). | Stabilized class agreement 78.57% (< 90%). | 1 accepted class switch(es).,Tier1
+low traffic.mp4,85,car,car,623,657,32,0.7812,0.6562,1,Raw class agreement 78.12% (< 90%). | Stabilized class agreement 65.62% (< 90%). | 1 accepted class switch(es).,Tier1
+no traffic video.mp4,119,car,car,619,629,8,0.625,1.0,0,Raw class agreement 62.50% (< 90%).,Tier1
+no traffic video.mp4,114,bicycle,bicycle,416,658,219,0.8493,0.8676,0,Raw class agreement 84.93% (< 90%). | Stabilized class agreement 86.76% (< 90%).,Tier2
+traffic.mp4,160,car,truck,93,94,2,0.5,1.0,0,Raw majority class (car) != stabilized class (truck). | Raw class agreement 50.00% (< 90%).,Tier1
+traffic.mp4,186,truck,truck,339,346,8,0.625,1.0,0,Raw class agreement 62.50% (< 90%).,Tier1
+traffic.mp4,224,bus,truck,556,566,11,0.6364,0.5455,1,Raw majority class (bus) != stabilized class (truck). | Raw class agreement 63.64% (< 90%). | Stabilized class agreement 54.55% (< 90%). | 1 accepted class switch(es).,Tier1
+traffic.mp4,138,bus,bus,1,599,564,0.6545,0.6771,0,Raw class agreement 65.45% (< 90%). | Stabilized class agreement 67.71% (< 90%).,Tier1
+traffic.mp4,176,car,car,239,274,13,0.8462,1.0,0,Raw class agreement 84.62% (< 90%).,Tier2
+traffic.mp4,145,car,car,5,599,531,0.8983,0.9379,4,Raw class agreement 89.83% (< 90%). | 4 accepted class switch(es).,Tier2

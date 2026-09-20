@@ -1,0 +1,396 @@
+{
+  "generated_from": [
+    "data/processed/level8_final_validation_report.txt",
+    "data/processed/{phase9a,phase9b,phase9c,phase9d,phase9e}_validation.csv"
+  ],
+  "note": "Validation evidence copied verbatim from the protected processed outputs. No checks are re-run or regenerated; values are reproduced exactly as recorded.",
+  "source_phase": "protected processed output (read-only)",
+  "level8": {
+    "title": "LEVEL 8A - FINAL DATASET VALIDATION",
+    "result": "PASSED",
+    "finalTrackIdentities": 122,
+    "totalTrajectoryRows": 15491,
+    "duplicateRowsArtifact": 108,
+    "perVideo": {
+      "low traffic.mp4": {
+        "final": 44,
+        "conservative": 35
+      },
+      "no traffic video.mp4": {
+        "final": 5,
+        "conservative": 5
+      },
+      "traffic.mp4": {
+        "final": 73,
+        "conservative": 68
+      }
+    },
+    "fps_sources": {
+      "low traffic.mp4": {
+        "resolution": "1920x1080",
+        "fps": 23.98,
+        "frames": 741
+      },
+      "no traffic video.mp4": {
+        "resolution": "1920x1080",
+        "fps": 59.94,
+        "frames": 1180
+      },
+      "traffic.mp4": {
+        "resolution": "1280x720",
+        "fps": 50,
+        "frames": 600
+      }
+    },
+    "checks": [
+      "final track identities = 122 (expected)",
+      "per-video low traffic.mp4: 44 (expected 44) [ok]",
+      "per-video no traffic video.mp4: 5 (expected 5) [ok]",
+      "per-video traffic.mp4: 73 (expected 73) [ok]",
+      "conservative low traffic.mp4: 35 (expected 35) [ok]",
+      "conservative no traffic video.mp4: 5 (expected 5) [ok]",
+      "conservative traffic.mp4: 68 (expected 68) [ok]",
+      "total trajectory rows = 15491 (expected)",
+      "all trajectory (video, track_id) resolve to track summary",
+      "no summary tracks are orphaned (all have trajectory rows)",
+      "no duplicate track IDs within any video",
+      "108 duplicate (video,frame,track_id) trajectory rows [expected merge-union artifact; tracks: low traffic.m#66 x57, traffic.mp4#138 x37, low traffic.m#15 x5, low traffic.m#90 x5, traffic.mp4#131 x2, no traffic vi#114 x1, traffic.mp4#126 x1]",
+      "NaN/inf/non-numeric values: none",
+      "negative frame numbers: none",
+      "invalid bboxes (non-positive w/h, negative, x2<x1): none",
+      "missing class labels: none",
+      "empty video names: none",
+      "track summary numeric fields: all valid",
+      "level7d_validation.csv: 9 PASS / 0 FAIL of 9 checks\r \r   Dataset structure notes:",
+      "Duplicate (video,frame,track_id) trajectory rows are the\r       documented merge-union artifact (rows of a merged fragment\r       are retained at shared frames with the parent). Reported\r       above; NOT removed and NOT silently fixed.",
+      "Gaps in track-id numbering are expected: merged source IDs\r       (e.g. 18, 157) are intentionally absent.",
+      "Vehicles removed earlier in the whole pipeline (Level 6B-7D)\r       are not part of this dataset by design.\r \r   FPS source: raw video container metadata (read-only).\r     low traffic.mp4: 1920x1080 @ 23.98 fps, 741 frames\r     no traffic video.mp4: 1920x1080 @ 59.94 fps, 1180 frames\r     traffic.mp4: 1280x720 @ 50.00 fps, 600 frames\r \r   Cross-checks that must agree:\r     count_summary total  : 122 (3-row sum)\r     track_summary total  : 122\r     comparison ALL-VIDEO : [{'row': '19', 'video': '__ALL_VIDEOS__', 'class': '__TOTAL__', 'original_raw': '124', 'corrected_raw': '122', 'raw_delta': '-2', 'original_stable': '124', 'corrected_stable': '122', 'stable_delta': '-2'}]"
+    ],
+    "rawReport": "==========================================================================\r\n  LEVEL 8A - FINAL DATASET VALIDATION  (Level 7D)\r\n==========================================================================\r\n  RESULT: PASSED\r\n\r\n  Independent checks (from raw Level 7D CSVs, not reports):\r\n    - final track identities = 122 (expected)\r\n    - per-video low traffic.mp4: 44 (expected 44) [ok]\r\n    - per-video no traffic video.mp4: 5 (expected 5) [ok]\r\n    - per-video traffic.mp4: 73 (expected 73) [ok]\r\n    - conservative low traffic.mp4: 35 (expected 35) [ok]\r\n    - conservative no traffic video.mp4: 5 (expected 5) [ok]\r\n    - conservative traffic.mp4: 68 (expected 68) [ok]\r\n    - total trajectory rows = 15491 (expected)\r\n    - all trajectory (video, track_id) resolve to track summary\r\n    - no summary tracks are orphaned (all have trajectory rows)\r\n    - no duplicate track IDs within any video\r\n    - 108 duplicate (video,frame,track_id) trajectory rows [expected merge-union artifact; tracks: low traffic.m#66 x57, traffic.mp4#138 x37, low traffic.m#15 x5, low traffic.m#90 x5, traffic.mp4#131 x2, no traffic vi#114 x1, traffic.mp4#126 x1]\r\n    - NaN/inf/non-numeric values: none\r\n    - negative frame numbers: none\r\n    - invalid bboxes (non-positive w/h, negative, x2<x1): none\r\n    - missing class labels: none\r\n    - empty video names: none\r\n    - track summary numeric fields: all valid\r\n    - level7d_validation.csv: 9 PASS / 0 FAIL of 9 checks\r\n\r\n  Dataset structure notes:\r\n    - Duplicate (video,frame,track_id) trajectory rows are the\r\n      documented merge-union artifact (rows of a merged fragment\r\n      are retained at shared frames with the parent). Reported\r\n      above; NOT removed and NOT silently fixed.\r\n    - Gaps in track-id numbering are expected: merged source IDs\r\n      (e.g. 18, 157) are intentionally absent.\r\n    - Vehicles removed earlier in the whole pipeline (Level 6B-7D)\r\n      are not part of this dataset by design.\r\n\r\n  FPS source: raw video container metadata (read-only).\r\n    low traffic.mp4: 1920x1080 @ 23.98 fps, 741 frames\r\n    no traffic video.mp4: 1920x1080 @ 59.94 fps, 1180 frames\r\n    traffic.mp4: 1280x720 @ 50.00 fps, 600 frames\r\n\r\n  Cross-checks that must agree:\r\n    count_summary total  : 122 (3-row sum)\r\n    track_summary total  : 122\r\n    comparison ALL-VIDEO : [{'row': '19', 'video': '__ALL_VIDEOS__', 'class': '__TOTAL__', 'original_raw': '124', 'corrected_raw': '122', 'raw_delta': '-2', 'original_stable': '124', 'corrected_stable': '122', 'stable_delta': '-2'}]\r\n"
+  },
+  "phase9a": [
+    {
+      "check": "all interval input rows processed",
+      "ok": "PASS",
+      "detail": "15 in, 15 interval rows out"
+    },
+    {
+      "check": "no NaN/Inf in computed activity_rate",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "no negative identity/observation counts",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "labels restricted to LOW/MODERATE/HEAVY/CONGESTED",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "deterministic (rerun on identical inputs reproduces labels)",
+      "ok": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Level 7D files unchanged",
+      "ok": "PASS",
+      "detail": "7 files hashed"
+    },
+    {
+      "check": "Level 8 files unchanged",
+      "ok": "PASS",
+      "detail": "6 files hashed"
+    }
+  ],
+  "phase9b": [
+    {
+      "check": "no NaN/Inf where not allowed",
+      "ok": "PASS",
+      "detail": "1 rows"
+    },
+    {
+      "check": "weather categories from allowed set",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "weather impact labels from allowed set",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "no fabricated LIVE weather values",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "mock mode clearly marked",
+      "ok": "PASS",
+      "detail": "0 mock rows"
+    },
+    {
+      "check": "deterministic mock results",
+      "ok": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "output schema consistent",
+      "ok": "PASS",
+      "detail": "identical key sets"
+    },
+    {
+      "check": "mode used",
+      "ok": "PASS",
+      "detail": "auto"
+    },
+    {
+      "check": "live weather attempted",
+      "ok": "PASS",
+      "detail": "yes (live data retrieved)"
+    },
+    {
+      "check": "no silent live->mock replacement without mock marking",
+      "ok": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Phase 9A unchanged",
+      "ok": "PASS",
+      "detail": "3 phase9a files hashed"
+    },
+    {
+      "check": "Level 8 unchanged",
+      "ok": "PASS",
+      "detail": "6 level8 files hashed"
+    },
+    {
+      "check": "Level 7D unchanged",
+      "ok": "PASS",
+      "detail": "7 level7d files hashed"
+    }
+  ],
+  "phase9c": [
+    {
+      "check": "records processed",
+      "ok": "PASS",
+      "detail": "8 records"
+    },
+    {
+      "check": "all labels from allowed category sets",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "confidence within [0,1]",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "UNKNOWN data never treated as GOOD",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "all-UNKNOWN rows -> UNKNOWN overall + risk",
+      "ok": "PASS",
+      "detail": "0 all-UNKNOWN records"
+    },
+    {
+      "check": "no live records (no live provider configured); mode/source/label consistent",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "deterministic mock results",
+      "ok": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "phase9a files unchanged",
+      "ok": "PASS",
+      "detail": "3 files hashed"
+    },
+    {
+      "check": "phase9b files unchanged",
+      "ok": "PASS",
+      "detail": "3 files hashed"
+    },
+    {
+      "check": "level8 files unchanged",
+      "ok": "PASS",
+      "detail": "6 files hashed"
+    },
+    {
+      "check": "level7d files unchanged",
+      "ok": "PASS",
+      "detail": "7 files hashed"
+    }
+  ],
+  "phase9d": [
+    {
+      "check": "required columns present",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "all scores 0-100 or UNKNOWN",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "confidence within 0-1",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "suitability from allowed set",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "UNKNOWN layer never converted to a good sub-score",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "UNKNOWN layer always reduces confidence",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "effective weights valid (0-100)",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "known-layer weight renormalization sums to 100",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "all-UNKNOWN produces UNKNOWN score",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "deterministic repeated calculation",
+      "ok": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "mock records remain labelled mock",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "no invalid/empty road IDs",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "no fabricated live records",
+      "ok": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "phase9a files unchanged",
+      "ok": "PASS",
+      "detail": "3 files hashed"
+    },
+    {
+      "check": "phase9b files unchanged",
+      "ok": "PASS",
+      "detail": "3 files hashed"
+    },
+    {
+      "check": "phase9c files unchanged",
+      "ok": "PASS",
+      "detail": "3 files hashed"
+    },
+    {
+      "check": "level8 files unchanged",
+      "ok": "PASS",
+      "detail": "6 files hashed"
+    },
+    {
+      "check": "level7d files unchanged",
+      "ok": "PASS",
+      "detail": "7 files hashed"
+    }
+  ],
+  "phase9e": [
+    {
+      "check": "required columns present",
+      "ok": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "route scores numeric 0-100 or UNKNOWN",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "route confidence within 0-1",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "routes categories match score bands",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "UNKNOWN route never converted to GOOD",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "all-UNKNOWN routes remain UNKNOWN",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "invalid routes explicitly marked invalid",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "score never built from zero known segments",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "mock routes remain labelled mock",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "no fabricated live data",
+      "ok": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "duplicate route IDs rejected",
+      "ok": "PASS",
+      "detail": "['ROUTE-A']"
+    },
+    {
+      "check": "single RECOMMENDED route",
+      "ok": "PASS",
+      "detail": "['ROUTE-D']"
+    },
+    {
+      "check": "RECOMMENDED has highest eligible score",
+      "ok": "PASS",
+      "detail": "84.0"
+    },
+    {
+      "check": "deterministic repeated execution",
+      "ok": "PASS",
+      "detail": ""
+    }
+  ]
+}

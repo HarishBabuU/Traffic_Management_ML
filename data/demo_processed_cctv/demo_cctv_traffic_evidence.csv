@@ -1,0 +1,10 @@
+route_id,cctv_id,source_video,status,total_frames,fps,duration_seconds,duration_minutes,conservative_tracks,activity_rate_tracks_per_min,activity_index_per_1000_frames,activity_condition,live,geographically_mapped,source_type
+route_a,CCTV-A01,CCTV-A01.mp4,OK,1501,25.0,60.04,1.0,216,215.856,143.904,VERY_HIGH,False,False,RECORDED DEMO
+route_a,CCTV-A02,CCTV-A02.mp4,OK,233,25.0,9.32,0.16,41,263.948,175.966,VERY_HIGH,False,False,RECORDED DEMO
+route_a,CCTV-A03,CCTV-A03.mp4,OK,1657,29.97,55.29,0.92,2,2.17,1.207,LOW,False,False,RECORDED DEMO
+route_b,CCTV-B01,CCTV-B01.mp4,OK,150,25.0,6.0,0.1,28,280.0,186.667,VERY_HIGH,False,False,RECORDED DEMO
+route_b,CCTV-B02,CCTV-B02.mp4,OK,391,25.0,15.64,0.26,45,172.634,115.09,VERY_HIGH,False,False,RECORDED DEMO
+route_b,CCTV-B03,CCTV-B03.mp4,OK,473,25.0,18.92,0.32,2,6.342,4.228,LOW,False,False,RECORDED DEMO
+route_c,CCTV-C01,CCTV-C01.mp4,OK,5721,30.0,190.7,3.18,375,117.986,65.548,HIGH,False,False,RECORDED DEMO
+route_c,CCTV-C02,CCTV-C02.mp4,OK,720,60.0,12.0,0.2,1,5.0,1.389,LOW,False,False,RECORDED DEMO
+route_c,CCTV-C03,CCTV-C03.mp4,OK,241,29.97,8.04,0.13,15,111.921,62.241,HIGH,False,False,RECORDED DEMO

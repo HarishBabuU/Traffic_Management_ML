@@ -1,0 +1,40 @@
+video,track_id,class,class_stable,first_frame,last_frame,frames_tracked,duration_frames,net_displacement_px,path_length_px,max_jump_px,mean_jump_px,reason,severity_tier
+low traffic.mp4,4,car,car,0,51,49,52,51.5,362.57,28.53,7.55,Spatially inconsistent/wandering: path 362.57px is > 3x net displacement 51.5px.,Tier2
+low traffic.mp4,5,car,car,2,40,21,39,436.55,845.5,551.47,42.27,Unusual jump: max single-frame centroid jump 551.47px (300px threshold).,Tier1
+low traffic.mp4,19,car,car,65,101,8,37,284.69,288.23,219.33,41.18,Unusual jump: max single-frame centroid jump 219.33px (150px threshold).,Tier2
+low traffic.mp4,28,car,car,168,296,129,129,359.52,2372.06,105.58,18.53,Spatially inconsistent/wandering: path 2372.06px is > 3x net displacement 359.52px.,Tier2
+low traffic.mp4,46,car,car,351,501,144,151,434.41,2655.73,119.1,18.57,Spatially inconsistent/wandering: path 2655.73px is > 3x net displacement 434.41px.,Tier2
+low traffic.mp4,56,car,car,434,451,18,18,4.18,139.58,13.84,8.21,Spatially inconsistent/wandering: path 139.58px is > 3x net displacement 4.18px.,Tier2
+low traffic.mp4,76,car,car,568,606,28,39,599.69,600.67,208.43,22.25,Unusual jump: max single-frame centroid jump 208.43px (150px threshold).,Tier2
+low traffic.mp4,79,car,car,592,660,56,69,1317.96,1375.4,291.05,25.01,Unusual jump: max single-frame centroid jump 291.05px (150px threshold).,Tier2
+low traffic.mp4,85,car,car,623,657,32,35,488.82,695.38,153.61,22.43,Unusual jump: max single-frame centroid jump 153.61px (150px threshold).,Tier2
+low traffic.mp4,107,car,car,725,740,16,16,36.52,125.92,12.88,8.39,Spatially inconsistent/wandering: path 125.92px is > 3x net displacement 36.52px.,Tier2
+no traffic video.mp4,111,bus,bus,1,980,932,980,826.05,3257.77,59.38,3.5,Spatially inconsistent/wandering: path 3257.77px is > 3x net displacement 826.05px.,Tier2
+no traffic video.mp4,114,bicycle,bicycle,416,658,219,243,107.32,836.34,54.89,3.84,Spatially inconsistent/wandering: path 836.34px is > 3x net displacement 107.32px.,Tier2
+traffic.mp4,132,car,car,1,51,50,51,14.88,26.23,1.4,0.54,Very little movement: net displacement 14.88px (< 20px) and path 26.23px (< 50px) over 50 rows.,Tier2
+traffic.mp4,134,car,car,1,599,593,599,122.81,457.6,6.16,0.77,Spatially inconsistent/wandering: path 457.6px is > 3x net displacement 122.81px.,Tier2
+traffic.mp4,139,car,car,1,16,10,16,11.55,11.82,4.38,1.31,Very little movement: net displacement 11.55px (< 20px) and path 11.82px (< 50px) over 10 rows.,Tier2
+traffic.mp4,143,bus,bus,1,599,599,599,45.62,317.86,15.66,0.53,Spatially inconsistent/wandering: path 317.86px is > 3x net displacement 45.62px.,Tier2
+traffic.mp4,145,car,car,5,599,531,595,120.8,684.41,22.61,1.29,Spatially inconsistent/wandering: path 684.41px is > 3x net displacement 120.8px.,Tier2
+traffic.mp4,148,motorcycle,motorcycle,15,204,145,190,114.24,346.95,22.45,2.41,Spatially inconsistent/wandering: path 346.95px is > 3x net displacement 114.24px.,Tier2
+traffic.mp4,153,motorcycle,motorcycle,52,55,4,4,9.95,13.41,9.37,4.47,Very little movement: net displacement 9.95px (< 20px) and path 13.41px (< 50px) over 4 rows.,Tier2
+traffic.mp4,156,motorcycle,motorcycle,80,93,5,14,4.2,6.26,2.59,1.56,Very little movement: net displacement 4.2px (< 20px) and path 6.26px (< 50px) over 5 rows.,Tier2
+traffic.mp4,157,motorcycle,motorcycle,85,92,7,8,12.4,13.62,4.32,2.27,Very little movement: net displacement 12.4px (< 20px) and path 13.62px (< 50px) over 7 rows.,Tier2
+traffic.mp4,164,truck,truck,134,193,34,60,3.24,29.63,2.0,0.9,Very little movement: net displacement 3.24px (< 20px) and path 29.63px (< 50px) over 34 rows.,Tier2
+traffic.mp4,173,motorcycle,motorcycle,220,241,19,22,19.61,20.36,1.83,1.13,Very little movement: net displacement 19.61px (< 20px) and path 20.36px (< 50px) over 19 rows.,Tier2
+traffic.mp4,176,car,car,239,274,13,36,19.11,33.19,5.86,2.77,Very little movement: net displacement 19.11px (< 20px) and path 33.19px (< 50px) over 13 rows.,Tier2
+traffic.mp4,180,motorcycle,motorcycle,307,313,7,7,14.33,20.04,12.82,3.34,Very little movement: net displacement 14.33px (< 20px) and path 20.04px (< 50px) over 7 rows.,Tier2
+traffic.mp4,186,truck,truck,339,346,8,8,5.3,7.12,1.46,1.02,Very little movement: net displacement 5.3px (< 20px) and path 7.12px (< 50px) over 8 rows.,Tier2
+traffic.mp4,196,motorcycle,motorcycle,413,426,14,14,11.76,15.62,2.36,1.2,Very little movement: net displacement 11.76px (< 20px) and path 15.62px (< 50px) over 14 rows.,Tier2
+traffic.mp4,198,bus,bus,420,470,22,51,8.54,13.75,4.11,0.65,Very little movement: net displacement 8.54px (< 20px) and path 13.75px (< 50px) over 22 rows.,Tier2
+traffic.mp4,201,motorcycle,motorcycle,448,463,10,16,12.48,15.62,4.36,1.74,Very little movement: net displacement 12.48px (< 20px) and path 15.62px (< 50px) over 10 rows.,Tier2
+traffic.mp4,203,truck,truck,451,599,80,149,1.32,81.49,3.6,1.03,Spatially inconsistent/wandering: path 81.49px is > 3x net displacement 1.32px.,Tier2
+traffic.mp4,208,car,car,476,507,32,32,11.22,29.89,2.32,0.96,Very little movement: net displacement 11.22px (< 20px) and path 29.89px (< 50px) over 32 rows.,Tier2
+traffic.mp4,212,car,car,502,528,21,27,6.85,13.21,2.07,0.66,Very little movement: net displacement 6.85px (< 20px) and path 13.21px (< 50px) over 21 rows.,Tier2
+traffic.mp4,218,car,car,537,599,48,63,5.88,15.87,1.69,0.34,Very little movement: net displacement 5.88px (< 20px) and path 15.87px (< 50px) over 48 rows.,Tier2
+traffic.mp4,221,motorcycle,motorcycle,546,559,14,14,1.86,7.8,1.52,0.6,Very little movement: net displacement 1.86px (< 20px) and path 7.8px (< 50px) over 14 rows.,Tier2
+traffic.mp4,224,bus,truck,556,566,11,11,4.28,10.02,2.59,1.0,Very little movement: net displacement 4.28px (< 20px) and path 10.02px (< 50px) over 11 rows.,Tier2
+traffic.mp4,232,motorcycle,motorcycle,587,599,13,13,9.22,11.77,1.61,0.98,Very little movement: net displacement 9.22px (< 20px) and path 11.77px (< 50px) over 13 rows.,Tier2
+traffic.mp4,233,motorcycle,motorcycle,589,599,11,11,9.08,10.36,2.07,1.04,Very little movement: net displacement 9.08px (< 20px) and path 10.36px (< 50px) over 11 rows.,Tier2
+traffic.mp4,234,truck,truck,590,596,7,7,2.92,4.95,1.24,0.83,Very little movement: net displacement 2.92px (< 20px) and path 4.95px (< 50px) over 7 rows.,Tier2
+traffic.mp4,235,bus,bus,593,599,7,7,2.62,4.17,1.38,0.69,Very little movement: net displacement 2.62px (< 20px) and path 4.17px (< 50px) over 7 rows.,Tier2

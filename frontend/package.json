@@ -1,0 +1,25 @@
+{
+  "name": "traffic-intelligence-dashboard",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Traffic Intelligence System - dashboard foundation (Phase 9F-1). Prototype UI that displays Phase 8 / Phase 9 processed data.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepare:data": "node scripts/prepare_data.mjs",
+    "prepare:demo:cctv": "node scripts/prepare_demo_cctv.mjs",
+    "test": "node --test scripts/routeIntelligence_test.mjs scripts/smoke_test.mjs scripts/commandCenter_test.mjs scripts/appViews_test.mjs scripts/step4_providerRoutes_test.mjs scripts/step4_videoStream_test.mjs"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^29.1.1",
+    "vite": "^6.0.7"
+  }
+}

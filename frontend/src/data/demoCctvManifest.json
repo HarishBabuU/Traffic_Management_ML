@@ -1,0 +1,41 @@
+{
+  "kind": "DEMO RECORDED CCTV REGISTRY",
+  "generatedFrom": "scripts/prepare_demo_cctv.mjs",
+  "footageSourceNote": "Pre-recorded, ML-analysed dataset clips served from public/recordings/. Not live CCTV and not geographically mapped.",
+  "usageNote": "Consumed by the route-intelligence service layer only. React components never reference clip filenames directly.",
+  "honesty": {
+    "live": false,
+    "geographicallyMapped": false,
+    "label": "RECORDED DEMO",
+    "note": "Every id in this registry is a recorded-demo source associated with an ordinal demo route segment for prototype analysis. None is a live camera and none carries a geographic position."
+  },
+  "routes": [
+    {
+      "route_id": "route_a",
+      "label": "Route 1",
+      "cameras": [
+        { "cctv_id": "CCTV-A01", "segment_index": 0, "video": "traffic.mp4" },
+        { "cctv_id": "CCTV-A02", "segment_index": 1, "video": "traffic.mp4" },
+        { "cctv_id": "CCTV-A03", "segment_index": 2, "video": "low traffic.mp4" }
+      ]
+    },
+    {
+      "route_id": "route_b",
+      "label": "Route 2",
+      "cameras": [
+        { "cctv_id": "CCTV-B01", "segment_index": 0, "video": "no traffic video.mp4" },
+        { "cctv_id": "CCTV-B02", "segment_index": 1, "video": "no traffic video.mp4" },
+        { "cctv_id": "CCTV-B03", "segment_index": 2, "video": "no traffic video.mp4" }
+      ]
+    },
+    {
+      "route_id": "route_c",
+      "label": "Route 3",
+      "cameras": [
+        { "cctv_id": "CCTV-C01", "segment_index": 0, "video": "low traffic.mp4" },
+        { "cctv_id": "CCTV-C02", "segment_index": 1, "video": "low traffic.mp4" },
+        { "cctv_id": "CCTV-C03", "segment_index": 2, "video": "traffic.mp4" }
+      ]
+    }
+  ]
+}

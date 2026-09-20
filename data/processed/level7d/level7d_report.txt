@@ -1,0 +1,42 @@
+==================================================================
+  Level 7D - Final Merge Application
+==================================================================
+  Applied merges (Level 7D SAME_VEHICLE):
+    low traffic.m   src  18 -> parent  15  (car->car)
+    traffic.mp4     src 157 -> parent 154  (motorcycle->motorcycle)
+
+  Counts (raw | stable)  [level7d]:
+    low traffic.mp4      total  44  cons  35  car 43/43  moto 0/0  bus 0/0  truck 1/1  bike 0/0
+    no traffic video.mp4 total   5  cons   5  car 3/3  moto 0/0  bus 1/1  truck 0/0  bike 1/1
+    traffic.mp4          total  73  cons  68  car 32/32  moto 34/34  bus 4/4  truck 3/3  bike 0/0
+
+  Delta vs Level 7C:
+    low traffic.mp4      total 45 -> 44 (-1)  cons 36 -> 35
+      car        raw 44->43 (-1)  stable 44->43 (-1)
+    no traffic video.mp4 total 5 -> 5 (+0)  cons 5 -> 5
+    traffic.mp4          total 74 -> 73 (-1)  cons 69 -> 68
+      motorcycle raw 35->34 (-1)  stable 35->34 (-1)
+
+  Trajectory rows: 15491 -> 15491 (preserved 1:1)
+  Unique identities removed: 2 (= 2 independent merges)
+
+  OVERALL total: 124 -> 122 (-2)  => DECREASED
+
+  Validation: ALL CHECKS PASSED
+    [PASS] exactly 2 identity removals  124 -> 122 (delta -2)
+    [PASS] TID 18 absent from low traffic.mp4
+    [PASS] TID 157 absent from traffic.mp4
+    [PASS] canonical TID 15 remains
+    [PASS] canonical TID 154 remains
+    [PASS] trajectory row count remains 15491  15491 -> 15491
+    [PASS] no unexpected track IDs changed  set()
+    [PASS] all approved source IDs mapped exactly once  applied={('low traffic.mp4', 18): 1, ('traffic.mp4', 157): 1} leftover=set()
+    [PASS] Level 7C files unchanged  level7c/ hashes unchanged
+
+  Outputs written:
+    C:\Users\haris\Traffic_project_ML\data\processed\level7d\level7d_count_comparison.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7d\level7d_count_summary.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7d\level7d_merge_manifest.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7d\level7d_track_summary.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7d\level7d_trajectories.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7d\level7d_validation.csv

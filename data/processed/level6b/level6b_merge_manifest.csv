@@ -1,0 +1,10 @@
+video,fragment_id,parent_id,decision,applied
+low traffic.mp4,29,32,SAME_VEHICLE,MERGED
+low traffic.mp4,47,49,DIFFERENT_VEHICLE,NOT_MERGED
+low traffic.mp4,84,66,SAME_VEHICLE,MERGED
+no traffic video.mp4,112,114,SAME_VEHICLE,MERGED
+traffic.mp4,206,138,UNCERTAIN,NOT_MERGED
+traffic.mp4,219,138,SAME_VEHICLE,MERGED
+traffic.mp4,220,189,SAME_VEHICLE,MERGED
+traffic.mp4,222,138,SAME_VEHICLE,MERGED
+traffic.mp4,230,138,SAME_VEHICLE,MERGED

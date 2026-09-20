@@ -1,0 +1,12 @@
+check,ok,detail
+records processed,PASS,8 records
+all labels from allowed category sets,PASS,0
+"confidence within [0,1]",PASS,0
+UNKNOWN data never treated as GOOD,PASS,0
+all-UNKNOWN rows -> UNKNOWN overall + risk,PASS,0 all-UNKNOWN records
+no live records (no live provider configured); mode/source/label consistent,PASS,0
+deterministic mock results,PASS,
+phase9a files unchanged,PASS,3 files hashed
+phase9b files unchanged,PASS,3 files hashed
+level8 files unchanged,PASS,6 files hashed
+level7d files unchanged,PASS,7 files hashed

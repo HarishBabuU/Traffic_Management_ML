@@ -1,0 +1,15 @@
+decision_group,video,source_id,canonical_parent_id,source_class_stable,parent_class_stable,decision,applied
+D6_45->46,low traffic.mp4,45,46,car,car,SAME_VEHICLE,MERGED
+D7_65_vs_79,low traffic.mp4,65,79,car,car,DIFFERENT_VEHICLE,NOT_MERGED
+D2_101->90,low traffic.mp4,101,90,truck,truck,SAME_VEHICLE,MERGED
+D3_118->114,no traffic video.mp4,118,114,bicycle,bicycle,SAME_VEHICLE,MERGED
+D9_153->146,traffic.mp4,153,146,motorcycle,motorcycle,SAME_VEHICLE,MERGED
+D5_160->131,traffic.mp4,160,131,truck,car,SAME_VEHICLE,MERGED
+D10_163->150,traffic.mp4,163,150,car,car,SAME_VEHICLE,MERGED
+D4_167->126,traffic.mp4,167,126,truck,car,SAME_VEHICLE,MERGED
+D8_176->131,traffic.mp4,176,131,car,car,SAME_VEHICLE,MERGED
+D1_truckchain->138,traffic.mp4,224,138,truck,bus,SAME_VEHICLE,MERGED
+D1_truckchain->138,traffic.mp4,228,138,truck,bus,SAME_VEHICLE,MERGED
+D1_truckchain->138,traffic.mp4,229,138,truck,bus,SAME_VEHICLE,MERGED
+D1_truckchain->138,traffic.mp4,234,138,truck,bus,SAME_VEHICLE,MERGED
+D1_truckchain->138,traffic.mp4,236,138,truck,bus,SAME_VEHICLE,MERGED

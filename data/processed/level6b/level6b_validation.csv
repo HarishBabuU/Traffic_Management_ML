@@ -1,0 +1,20 @@
+check,ok,detail
+exactly 7 merges applied,PASS,approved merges = 7
+all 7 merges applied exactly once,PASS,"{(222, 138): 1, (29, 32): 1, (112, 114): 1, (220, 189): 1, (219, 138): 1, (230, 138): 1, (84, 66): 1}"
+all merged fragments absent as logical tracks,PASS,leftover fragments=set()
+parent 66 present after merge (84->66),PASS,video=low traffic.mp4
+parent 32 present after merge (29->32),PASS,video=low traffic.mp4
+parent 114 present after merge (112->114),PASS,video=no traffic video.mp4
+parent 138 present after merge (222->138),PASS,video=traffic.mp4
+parent 138 present after merge (219->138),PASS,video=traffic.mp4
+parent 138 present after merge (230->138),PASS,video=traffic.mp4
+parent 189 present after merge (220->189),PASS,video=traffic.mp4
+47 not merged into 49 (DIFFERENT_VEHICLE),PASS,47/49 remain separate
+47 present as logical track,PASS,
+49 present as logical track,PASS,
+206 not merged into 138 (UNCERTAIN),PASS,
+206 present as logical track,PASS,
+138 present as logical track,PASS,
+trajectory row count preserved,PASS,15491 -> 15491
+no original file overwritten,PASS,level6b/ contains only new files
+counts equal sum of merge removals,PASS,148 -> 141 (= -7)

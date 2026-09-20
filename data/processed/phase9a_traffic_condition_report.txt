@@ -1,0 +1,87 @@
+============================================================================
+  PHASE 9A - TRAFFIC CONDITION ENGINE (explainable rule-based)
+============================================================================
+
+  STEP 1 - DATA INSPECTED (read-only, Level 8 outputs)
+    level8_traffic_over_time.csv  : 15 interval rows; per interval:
+        video, interval_seconds (start-end), start/end frame,
+        unique_active_identities (DISTINCT tracked vehicles visible
+        in that interval), trajectory_observations (raw rows).
+    level8_traffic_statistics.csv : overall corrected=122 (conservative=108),
+        per-class stable counts, trajectory rows=15491.
+    level8_class_by_video.csv     : per-video x class counts.
+    level8_summary.txt / validation report : aggregates & integrity notes.
+
+  WHAT THE DATA REPRESENTS
+    * UNIQUE IDENTITIES (per track, total 122)  !=  trajectory rows (15491).
+    * interval 'unique_active_identities' is ACTIVITY: one vehicle may appear
+      in several intervals. Summing the 15 intervals would NOT give 122 and is
+      NEVER used as a vehicle count by this engine.
+
+  METRIC SELECTED (fair across differing interval lengths)
+    activity_rate = unique_active_identities / interval_duration_seconds
+    -> distinct tracked vehicles observed per second of footage.
+    Interval bins: low/no-traffic clips = 5 s; traffic.mp4 clip = 3 s.
+    Raw per-interval identity counts are NOT comparable across those two bin
+    sizes; dividing by the interval duration makes them comparable.
+
+  STEP 2 - EXPLAINABLE RULE (identities per second)
+      LOW       : activity_rate < 1.0
+      MODERATE  : 1.0 <= activity_rate < 4.0
+      HEAVY     : 4.0 <= activity_rate < 8.0
+      CONGESTED : activity_rate >= 8.0
+
+  THRESHOLD BASIS (derived from the observed data)
+    no-traffic clip intervals : 0.20 - 0.80 /s  ->  LOW (cap 1.0)
+    low-traffic clip intervals: 1.20 - 2.22 /s  ->  MODERATE (1.0-4.0)
+    dense traffic clip        : 10.33 - 13.33 /s->  CONGESTED (>= 8.0)
+    HEAVY (4.0-8.0) is a RESERVED band: no observed interval falls inside
+    it because the three clips are strongly bimodal (near-empty vs dense).
+    Thresholds are DATASET-RELATIVE; they are NOT presented as real-world
+    traffic-engineering congestion standards (no capacity/speed/lane data).
+
+  RESULTS (per interval, 15 interval rows)
+    LOW:4  MODERATE:7  HEAVY:0  CONGESTED:4
+    by video: low traffic.mp4=7 rows, no traffic video.mp4=4 rows, traffic.mp4=4 rows
+
+  STEP 5 - REPRESENTATIVE EXAMPLES (actual dataset values)
+    video=no traffic vi  interval=0.0-5.0   identities=  1 duration=5.0s rate=0.200/s  -> LOW   [activity_rate 0.20 < 1.0  ->  LOW]
+    video=low traffic.m  interval=0.0-5.0   identities= 10 duration=5.0s rate=2.000/s  -> MODERATE   [1.0 <= activity_rate 2.00 < 4.0  ->  MODERATE]
+    video=traffic.mp4    interval=0.0-3.0   identities= 35 duration=3.0s rate=11.667/s  -> CONGESTED   [activity_rate 11.67 >= 8.0  ->  CONGESTED]
+    video=traffic.mp4    interval=9.0-12.0  identities= 40 duration=3.0s rate=13.333/s  -> CONGESTED   [activity_rate 13.33 >= 8.0  ->  CONGESTED]
+
+  PER-VIDEO OVERVIEW (media activity aggregate - NOT vehicle counts)
+    low traffic.mp4        mean rate 1.860/s over 7 interval(s) -> MODERATE
+    no traffic video.mp4   mean rate 0.456/s over 4 interval(s) -> LOW
+    traffic.mp4            mean rate 11.667/s over 4 interval(s) -> CONGESTED
+    note: overview row for 'low traffic.mp4': mean activity_rate = 1.86 ids/s across 7 interval(s); this is an AGGREGATE of interval activity, not the vehicle count for the clip.
+    note: overview row for 'no traffic video.mp4': mean activity_rate = 0.46 ids/s across 4 interval(s); this is an AGGREGATE of interval activity, not the vehicle count for the clip.
+    note: overview row for 'traffic.mp4': mean activity_rate = 11.67 ids/s across 4 interval(s); this is an AGGREGATE of interval activity, not the vehicle count for the clip.
+
+  VALIDATION: ALL CHECKS PASSED
+    [PASS] all interval input rows processed  15 in, 15 interval rows out
+    [PASS] no NaN/Inf in computed activity_rate  0
+    [PASS] no negative identity/observation counts  0
+    [PASS] labels restricted to LOW/MODERATE/HEAVY/CONGESTED  []
+    [PASS] deterministic (rerun on identical inputs reproduces labels)
+    [PASS] Level 7D files unchanged  7 files hashed
+    [PASS] Level 8 files unchanged  6 files hashed
+
+  LIMITATIONS (documented honestly)
+    * This is a CLASSIFICATION of observed interval activity into a
+      4-level condition label based on DISTINCT VEHICLES PER SECOND.
+    * Vehicle count/activity alone does not equal congestion. Real congestion
+      depends on road capacity, speed, density, lane count, travel time, etc.
+    * No ground-truth congestion rating, speed, or road-capacity data exists in
+      this dataset; therefore this is NOT a universal real-world congestion
+      detector and is not calibrated to any traffic-engineering LOS standard.
+    * 'CONGESTED' here means '> 8 distinct tracked vehicles observed per
+      second of the video', which only occurs in the dense clip of this dataset.
+    * The HEAVY band is currently unobserved; future data is needed to confirm it.
+    * Per-video 'video_overview' rows label mean interval activity; they are
+      explicitly NOT per-video vehicle counts (which are 44 / 5 / 73).
+
+  FILES WRITTEN (new, nothing else modified):
+    C:\Users\haris\Traffic_project_ML\data\processed\phase9a_traffic_conditions.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\phase9a_traffic_condition_report.txt
+    C:\Users\haris\Traffic_project_ML\data\processed\phase9a_validation.csv

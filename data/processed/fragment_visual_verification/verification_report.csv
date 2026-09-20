@@ -1,0 +1,10 @@
+video,fragment_id,parent_id,fragment_class,parent_class,visual_status,confidence,notes
+low traffic.mp4,84,66,car,car,NEEDS_MANUAL_REVIEW,0.8831,direction=overlap; gap=-4; dist=5.0px; IoU=0.8831; WR=0.096; frames_saved=612-625; frames-> JPG + MP4
+low traffic.mp4,47,49,car,car,NEEDS_MANUAL_REVIEW,0.4679,direction=fragment_before_parent; gap=14; dist=12.8px; IoU=0.4679; WR=0.196; frames_saved=368-388; frames-> JPG + MP4
+low traffic.mp4,29,32,car,car,NEEDS_MANUAL_REVIEW,0.4518,direction=fragment_before_parent; gap=2; dist=23.0px; IoU=0.4518; WR=0.429; frames_saved=184-193; frames-> JPG + MP4
+no traffic video.mp4,112,114,bicycle,bicycle,NEEDS_MANUAL_REVIEW,0.494,direction=fragment_before_parent; gap=7; dist=34.2px; IoU=0.494; WR=0.116; frames_saved=424-441; frames-> JPG + MP4
+traffic.mp4,222,138,bus,bus,NEEDS_MANUAL_REVIEW,0.9881,direction=overlap; gap=-3; dist=0.5px; IoU=0.9881; WR=0.007; frames_saved=545-557; frames-> JPG + MP4
+traffic.mp4,219,138,bus,bus,NEEDS_MANUAL_REVIEW,0.9818,direction=overlap; gap=-7; dist=0.9px; IoU=0.9818; WR=0.013; frames_saved=534-550; frames-> JPG + MP4
+traffic.mp4,206,138,bus,bus,NEEDS_MANUAL_REVIEW,0.9795,direction=overlap; gap=-3; dist=0.6px; IoU=0.9795; WR=0.015; frames_saved=454-466; frames-> JPG + MP4
+traffic.mp4,230,138,bus,bus,NEEDS_MANUAL_REVIEW,0.9589,direction=overlap; gap=-2; dist=1.0px; IoU=0.9589; WR=0.037; frames_saved=579-590; frames-> JPG + MP4
+traffic.mp4,220,189,motorcycle,motorcycle,NEEDS_MANUAL_REVIEW,0.6619,direction=parent_before_fragment; gap=12; dist=8.2px; IoU=0.6619; WR=0.241; frames_saved=526-548; frames-> JPG + MP4

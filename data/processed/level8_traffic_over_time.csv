@@ -1,0 +1,16 @@
+video,interval_seconds,start_frame,end_frame,unique_active_identities,trajectory_observations
+low traffic.mp4,0.0-5.0,0,119,10,332
+low traffic.mp4,5.0-10.0,120,239,6,199
+low traffic.mp4,10.0-15.0,240,359,9,226
+low traffic.mp4,15.0-20.0,360,479,11,311
+low traffic.mp4,20.0-25.0,480,598,8,334
+low traffic.mp4,25.0-30.0,599,718,10,284
+low traffic.mp4,30.0-30.9,719,740,2,37
+no traffic video.mp4,0.0-5.0,0,299,1,299
+no traffic video.mp4,5.0-10.0,300,598,2,424
+no traffic video.mp4,10.0-15.0,599,898,4,380
+no traffic video.mp4,15.0-19.7,899,1179,2,327
+traffic.mp4,0.0-3.0,0,149,35,3186
+traffic.mp4,3.0-6.0,150,299,31,3179
+traffic.mp4,6.0-9.0,300,449,34,2930
+traffic.mp4,9.0-12.0,450,599,40,3043

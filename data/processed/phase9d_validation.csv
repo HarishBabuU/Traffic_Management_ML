@@ -1,0 +1,19 @@
+check,ok,detail
+required columns present,PASS,[]
+all scores 0-100 or UNKNOWN,PASS,0
+confidence within 0-1,PASS,0
+suitability from allowed set,PASS,0
+UNKNOWN layer never converted to a good sub-score,PASS,0
+UNKNOWN layer always reduces confidence,PASS,0
+effective weights valid (0-100),PASS,0
+known-layer weight renormalization sums to 100,PASS,0
+all-UNKNOWN produces UNKNOWN score,PASS,0
+deterministic repeated calculation,PASS,
+mock records remain labelled mock,PASS,0
+no invalid/empty road IDs,PASS,0
+no fabricated live records,PASS,0
+phase9a files unchanged,PASS,3 files hashed
+phase9b files unchanged,PASS,3 files hashed
+phase9c files unchanged,PASS,3 files hashed
+level8 files unchanged,PASS,6 files hashed
+level7d files unchanged,PASS,7 files hashed

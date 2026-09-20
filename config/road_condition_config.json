@@ -1,0 +1,87 @@
+{
+  "_comment": "Road-condition layer configuration (Phase 9C). This file defines a CONFIGURABLE data layer. No live road-condition provider is currently configured, so the default mode is 'mock' (deterministic test records). All roads/coordinates below are FICTIONAL TEST DATA - they are NOT real user locations and are NOT associated with any existing traffic video. At least one real external provider (traffic-agency feeds, road sensors, etc.) can be added later by implementing a live provider against the interface in src/road_condition_provider.py.",
+  "provider": "manual",
+  "mode": "mock",
+  "allow_mock_fallback": false,
+  "api": {
+    "timeout_seconds": 20,
+    "env_url_override": null,
+    "env_key": null,
+    "note": "No live road-condition provider is configured. live mode therefore reports unavailable instead of fabricating data. Env overrides ROAD_CONDITION_API_URL / ROAD_CONDITION_API_KEY can be added when a real provider is integrated (no credentials are stored here)."
+  },
+  "categories": {
+    "road_surface": ["GOOD", "MODERATE", "POOR", "UNKNOWN"],
+    "construction_status": ["NONE", "ACTIVE", "UNKNOWN"],
+    "closure_status": ["OPEN", "PARTIAL", "CLOSED", "UNKNOWN"],
+    "flooding_status": ["NONE", "POSSIBLE", "SEVERE", "UNKNOWN"],
+    "incident_status": ["NONE", "REPORTED", "UNKNOWN"],
+    "overall_road_condition": ["GOOD", "MODERATE", "POOR", "RESTRICTED", "UNKNOWN"],
+    "road_risk": ["LOW", "MODERATE", "HIGH", "UNKNOWN"],
+    "data_mode": ["live", "manual", "mock", "unknown"]
+  },
+  "mock": {
+    "deterministic": true,
+    "record_count": 8,
+    "_comment": "Mock records are a pure function of (road_id, latitude, longitude, timestamp): identical inputs always yield identical road conditions. record_count keeps the deliverable CSV small and deterministic."
+  },
+  "test_roads": [
+    {
+      "road_id": "TEST-RD-01",
+      "road_name": "Test Road Alpha (fictional test road)",
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "label": "FICTIONAL TEST COORDINATES - not a real road, not linked to any traffic video"
+    },
+    {
+      "road_id": "TEST-RD-02",
+      "road_name": "Test Road Beta (fictional test road)",
+      "latitude": 0.1,
+      "longitude": 0.1,
+      "label": "FICTIONAL TEST COORDINATES - not a real road, not linked to any traffic video"
+    },
+    {
+      "road_id": "TEST-RD-03",
+      "road_name": "Test Road Gamma (fictional test road)",
+      "latitude": -0.05,
+      "longitude": 0.05,
+      "label": "FICTIONAL TEST COORDINATES - not a real road, not linked to any traffic video"
+    },
+    {
+      "road_id": "TEST-RD-04",
+      "road_name": "Test Road Delta (fictional test road)",
+      "latitude": 0.2,
+      "longitude": -0.1,
+      "label": "FICTIONAL TEST COORDINATES - not a real road, not linked to any traffic video"
+    },
+    {
+      "road_id": "TEST-RD-05",
+      "road_name": "Test Road Epsilon (fictional test road)",
+      "latitude": -0.1,
+      "longitude": 0.2,
+      "label": "FICTIONAL TEST COORDINATES - not a real road, not linked to any traffic video"
+    },
+    {
+      "road_id": "TEST-RD-06",
+      "road_name": "Test Road Zeta (fictional test road)",
+      "latitude": 0.05,
+      "longitude": -0.2,
+      "label": "FICTIONAL TEST COORDINATES - not a real road, not linked to any traffic video"
+    },
+    {
+      "road_id": "TEST-RD-07",
+      "road_name": "Test Road Eta (fictional test road)",
+      "latitude": -0.2,
+      "longitude": -0.05,
+      "label": "FICTIONAL TEST COORDINATES - not a real road, not linked to any traffic video"
+    },
+    {
+      "road_id": "TEST-RD-08",
+      "road_name": "Test Road Theta (fictional test road)",
+      "latitude": 0.15,
+      "longitude": 0.15,
+      "label": "FICTIONAL TEST COORDINATES - not a real road, not linked to any traffic video"
+    }
+  ],
+  "manual_records": [],
+  "_manual_records_note": "manual_records is intentionally empty for this deliverable. When a user supplies road-condition observations, they are placed here or passed to the engine programmatically; every such record is labelled data_mode='manual' and is NEVER presented as live data."
+}

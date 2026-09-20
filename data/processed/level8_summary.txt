@@ -1,0 +1,103 @@
+==========================================================================
+  LEVEL 8 - FINAL TRAFFIC STATISTICS  (final corrected dataset, Level 7D)
+==========================================================================
+
+  A. OVERALL
+      Total corrected vehicle identities : 122
+      Total conservative identities      : 108
+      Total trajectory rows              : 15491
+      Number of videos                   : 3
+
+  B. VEHICLES BY VIDEO
+      video                  corrected  conservative  % of all
+      low traffic.mp4               44            35     36.1%
+      no traffic video.mp4           5             5      4.1%
+      traffic.mp4                   73            68     59.8%
+      TOTAL                        122           108    100.0%
+
+  C. VEHICLES BY CLASS (stable) - entire dataset
+      class          count   percent
+      car               78     63.9%
+      motorcycle        34     27.9%
+      bus                5      4.1%
+      truck              4      3.3%
+      bicycle            1      0.8%
+      total            122    100.0%
+
+  D. VEHICLES BY CLASS AND VIDEO
+      video                          car  motorcycle         bus       truck     bicycle   total
+      low traffic.mp4                 43           0           0           1           0      44
+      no traffic video.mp4             3           0           1           0           1       5
+      traffic.mp4                     32          34           4           3           0      73
+      TOTAL                           78          34           5           4           1     122
+
+  E. TRACK DURATION (frames; inclusive span = last - first + 1)
+duration_frames min    : 1
+duration_frames max    : 980
+      duration_frames mean   : 135.22
+      duration_frames median : 49.00
+duration_frames p25    : 16
+duration_frames p75    : 149
+      (based on 122 tracks)
+
+  E-bis. TRACK DURATION in seconds (raw container FPS: low 23.98 / no-traffic 59.94 / traffic 50.0)
+      duration_sec   min    : 0.020
+      duration_sec   max    : 16.350
+      duration_sec   mean   : 2.978
+      duration_sec   median : 1.220
+      duration_sec   p25    : 0.375
+      duration_sec   p75    : 3.712
+      (based on 122 tracks)
+
+  F. CLASS-SPECIFIC DURATION (frames)
+      class           n  mean_frames  median_frames
+      car            78       149.74           48.0
+      motorcycle     34        59.76           45.0
+      bus             5       447.20          599.0
+      truck           4        76.50           74.5
+      bicycle         1       243.00          243.0
+
+  G. TRAFFIC DISTRIBUTION OVER TIME
+      (reporting BOTH metrics explicitly: 'unique_active_identities' = distinct tracked
+       vehicles seen in the interval; 'trajectory_observations' = raw trajectory rows
+       counted in that interval - these are NOT the same thing.)
+      video                    interval(s)  identities  traj_rows
+      low traffic.mp4              0.0-5.0          10        332
+      low traffic.mp4             5.0-10.0           6        199
+      low traffic.mp4            10.0-15.0           9        226
+      low traffic.mp4            15.0-20.0          11        311
+      low traffic.mp4            20.0-25.0           8        334
+      low traffic.mp4            25.0-30.0          10        284
+      low traffic.mp4            30.0-30.9           2         37
+      no traffic video.mp4         0.0-5.0           1        299
+      no traffic video.mp4        5.0-10.0           2        424
+      no traffic video.mp4       10.0-15.0           4        380
+      no traffic video.mp4       15.0-19.7           2        327
+      traffic.mp4                  0.0-3.0          35       3186
+      traffic.mp4                  3.0-6.0          31       3179
+      traffic.mp4                  6.0-9.0          34       2930
+      traffic.mp4                 9.0-12.0          40       3043
+
+  H. CONSERVATIVE VS TOTAL
+      total corrected : 122
+      conservative    : 108
+      difference      : 14 (+14)
+      % difference    : 11.48% of total excluded by the confidence/frame gate
+
+  I. MERGE IMPACT (Level 7D stage only - this stage's manifest)
+      identities before Level 7D : 124
+      identities after Level 7D  : 122
+      identities removed by 7D   : 2
+      per-video before -> after (from count_comparison __TOTAL__ rows):
+        low traffic.mp4        45 -> 44  (delta -1)
+        no traffic video.mp4   5 -> 5  (delta +0)
+        traffic.mp4            74 -> 73  (delta -1)
+      applied merges (7D manifest):
+        low traffic.mp4        removed 18 -> canonical 15 (car->car)
+        traffic.mp4            removed 157 -> canonical 154 (motorcycle->motorcycle)
+
+  NOTES / CAVEATS
+    - 'trajectory rows' include merge-union duplicate-frame rows retained by design (see validation report).
+    - Conservative counts use the project gate: frames_tracked >= 3 AND confidence_average >= 0.30.
+    - Bicycle class is present only because the no-traffic video published 1 bicycle; it is not aggregated anywhere else.
+    - FPS read from raw video container metadata (read-only); no FPS was guessed.

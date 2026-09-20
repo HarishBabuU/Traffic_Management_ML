@@ -1,0 +1,108 @@
+============================================================================
+  PHASE 9E - ROUTE RECOMMENDATION ENGINE (explainable prototype)
+============================================================================
+  Candidate routes      : 7
+  Validation checks     : 14
+
+  1. PURPOSE
+     Combine Phase 9D road suitability scores into explainable
+     route-level scores for explicit candidate routes.
+
+  2. INPUT
+     Phase 9D road scores consumed read-only from:
+       C:\Users\haris\Traffic_project_ML\data\processed\phase9d_road_scores.csv
+     The Phase 9D road IDs used by Phase 9E candidate routes:
+       MOCK-ROAD-01, MOCK-ROAD-02, MOCK-ROAD-03, MOCK-ROAD-04, MOCK-ROAD-05, MOCK-ROAD-06, MOCK-ROAD-07, MOCK-ROAD-08
+
+  3. ROUTE MODEL
+     Each route has: route_id, segment_order, road_id, road_name,
+     optional distance_km, optional travel_time_minutes, data_mode.
+     If a distance or travel time is unavailable it is NOT estimated
+     and is left explicitly unavailable/blank. Fictional mock
+     distances are used only to exercise the weighting logic.
+
+  4. ROUTE SCORE
+     * Every segment score comes from Phase 9D (overall_score).
+     * If EVERY segment has an explicit distance_km:
+         route_score = sum(score_i * dist_i) / sum(dist_i) over KNOWN segments.
+     * Otherwise equal weighting over the KNOWN segments is used.
+     * UNKNOWN segments are NEVER scored as 100 and never counted toward
+       the score; they lower completeness and confidence.
+     * If every segment is UNKNOWN the route score is UNKNOWN.
+
+  5. ROUTE CONFIDENCE
+     route_confidence = mean(Phase 9D segment confidence over ALL
+       segments) * (known_segment_count / total_segment_count)
+       * min(per-segment data-mode factor)  [clipped to 0.05..1.0]
+     mode factors: live=1.0, manual=0.9, mock=0.7, unknown=0.25.
+     This is intentionally conservative: mock data, UNKNOWN segments
+     and incomplete routes all lower confidence.
+
+  6. ROUTE CATEGORY (same bands as Phase 9D)
+     80-100 = GOOD | 60-79 = MODERATE | 40-59 = CAUTION |
+     20-39 = POOR | 0-19 = VERY_POOR | UNKNOWN -> UNKNOWN
+
+  7. RECOMMENDATION
+     RECOMMENDED   : highest-scoring eligible route (single pick)
+     ELIGIBLE      : valid route with a numeric route score
+     INSUFFICIENT_DATA : zero known segments (score UNKNOWN)
+     INVALID_ROUTE : nonexistent road_id, duplicate route_id, empty
+                    segment list, or invalid segment_order
+     Ties broken by: confidence, then known segment count, then id.
+
+  8. ROUTE RESULTS
+     route_id  score    cat        conf  status            known
+     ROUTE-A   UNKNOWN  UNKNOWN    0.05  INVALID_ROUTE     3/3
+     ROUTE-B   23.5     POOR       0.39  ELIGIBLE          1/1
+     ROUTE-C   80.6     GOOD       0.39  ELIGIBLE          2/2
+     ROUTE-D   84.0     GOOD       0.06  RECOMMENDED       1/2
+     ROUTE-E   UNKNOWN  UNKNOWN    0.05  INSUFFICIENT_DATA 0/2
+     ROUTE-F   UNKNOWN  UNKNOWN    0.05  INVALID_ROUTE     1/2
+     ROUTE-A   UNKNOWN  UNKNOWN    0.05  INVALID_ROUTE     2/2
+
+  9. EXPLAINABLE REASONS
+     ROUTE-A: Invalid route: duplicate route_id ROUTE-A appears more than once in the candidate set; duplicate routes are excluded from recommendation. Route ROUTE-A has 3 segment(s): MOCK-ROAD-01;MOCK-ROAD-02;MOCK-ROAD-03. Equal weighting over known segments: (100.0 + 75.8 + 42.2) / 3 = 72.7/100. Suitability category: MODERATE. Known segments 3/3, unknown segments 0. Route confidence: 0.39. This is a MOCK/TEST route with fictional roads and is not real-world evidence.
+     ROUTE-B: Route ROUTE-B has 1 segment(s): MOCK-ROAD-04. Equal weighting over known segments: (23.5) / 1 = 23.5/100. Suitability category: POOR. Known segments 1/1, unknown segments 0. Route confidence: 0.39. This is a MOCK/TEST route with fictional roads and is not real-world evidence.
+     ROUTE-C: Route ROUTE-C has 2 segment(s): MOCK-ROAD-01;MOCK-ROAD-02. Distance-weighted average over known segments: (100.0*2.0 + 75.8*8.0) / 10 = 80.6/100. Suitability category: GOOD. Known segments 2/2, unknown segments 0. Route confidence: 0.39. This is a MOCK/TEST route with fictional roads and is not real-world evidence.
+     ROUTE-D: Route ROUTE-D has 2 segment(s): MOCK-ROAD-05;MOCK-ROAD-07. Equal weighting over known segments: (84.0) / 1 = 84.0/100. Suitability category: GOOD. Known segments 1/2, unknown segments 1. UNKNOWN segments are never scored as good; they are excluded from the score and lower confidence. Route confidence: 0.06. This is a MOCK/TEST route with fictional roads and is not real-world evidence.
+     ROUTE-E: Route ROUTE-E has 2 segment(s): MOCK-ROAD-07;MOCK-ROAD-07. Every referenced road has an UNKNOWN Phase 9D score (0 known segments). No score can be computed, so the route score is UNKNOWN. This is a MOCK/TEST route with fictional roads and is not real-world evidence.
+     ROUTE-F: Route ROUTE-F has 2 segment(s): MOCK-ROAD-01;NONEXISTENT-ROAD-X9. Invalid route: road_id NONEXISTENT-ROAD-X9 is not in the Phase 9D scores. No route score is produced for an invalid route (UNKNOWN). This is a MOCK/TEST route with fictional roads and is not real-world evidence.
+     ROUTE-A: Invalid route: duplicate route_id ROUTE-A appears more than once in the candidate set; duplicate routes are excluded from recommendation. Route ROUTE-A has 2 segment(s): MOCK-ROAD-01;MOCK-ROAD-02. Equal weighting over known segments: (100.0 + 75.8) / 2 = 87.9/100. Suitability category: GOOD. Known segments 2/2, unknown segments 0. Route confidence: 0.39. This is a MOCK/TEST route with fictional roads and is not real-world evidence.
+
+  10. MOCK/TEST LIMITATIONS
+      All candidate routes are DETERMINISTIC MOCK/TEST routes over the
+      fictional Phase 9D MOCK-ROAD-* records. They describe no real
+      roads and are NOT a production navigation system. Live traffic,
+      weather, or road data is never fabricated.
+
+  VALIDATION
+    [PASS] required columns present  
+    [PASS] route scores numeric 0-100 or UNKNOWN  []
+    [PASS] route confidence within 0-1  []
+    [PASS] routes categories match score bands  []
+    [PASS] UNKNOWN route never converted to GOOD  []
+    [PASS] all-UNKNOWN routes remain UNKNOWN  []
+    [PASS] invalid routes explicitly marked invalid  []
+    [PASS] score never built from zero known segments  []
+    [PASS] mock routes remain labelled mock  []
+    [PASS] no fabricated live data  []
+    [PASS] duplicate route IDs rejected  ['ROUTE-A']
+    [PASS] single RECOMMENDED route  ['ROUTE-D']
+    [PASS] RECOMMENDED has highest eligible score  84.0
+    [PASS] deterministic repeated execution  
+
+  PROTECTED FILE INTEGRITY
+    [PASS] phase9a: 3 file(s) unchanged
+    [PASS] phase9b: 3 file(s) unchanged
+    [PASS] phase9c: 3 file(s) unchanged
+    [PASS] phase9d: 3 file(s) unchanged
+    [PASS] level8: 6 file(s) unchanged
+    [PASS] level7d: 7 file(s) unchanged
+    Total protected files verified : 25
+
+  OVERALL VERDICT : PASS
+
+  IMPORTANT DISCLAIMER
+  This is an explainable prototype route recommendation engine and is
+  not a calibrated traffic-engineering or production navigation system.
+

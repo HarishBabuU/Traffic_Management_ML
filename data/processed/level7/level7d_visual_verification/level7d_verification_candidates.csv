@@ -1,0 +1,3 @@
+candidate_id,video,track_ids,frame_window,classes,reason,clip_path,decision
+15_18,low traffic.mp4,15+18,30-105,car+car,Car 15 (f37-69) overlaps car 18 (f65-98) for 5 frames with max IoU 0.47; the overlap window is f65-69. Judge whether these are the same vehicle (duplicated identity) or two adjacent vehicles.,C:\Users\haris\Traffic_project_ML\data\processed\level7\level7d_visual_verification\clip_15_18.mp4,
+154_157,traffic.mp4,154+157,40-100,motorcycle+motorcycle,Motorcycle 154 (f53-71) and motorcycle 157 (f85-92) have a 14-frame gap with boundary centroid distance 25px. Judge whether 157 is a re-issue of the same motorcycle after occlusion or a different motorcycle.,C:\Users\haris\Traffic_project_ML\data\processed\level7\level7d_visual_verification\clip_154_157.mp4,

@@ -1,0 +1,123 @@
+video,track_id,vehicle_class_stable,first_frame,last_frame,tracked_rows,duration_frames,duration_seconds
+low traffic.mp4,1,car,0,22,23,23,0.959
+low traffic.mp4,2,car,0,29,30,30,1.251
+low traffic.mp4,3,car,0,70,71,71,2.961
+low traffic.mp4,4,car,0,51,49,52,2.169
+low traffic.mp4,5,car,2,40,21,39,1.627
+low traffic.mp4,11,car,32,36,5,5,0.209
+low traffic.mp4,13,car,36,68,33,33,1.376
+low traffic.mp4,15,car,37,98,67,62,2.586
+low traffic.mp4,19,car,65,101,8,37,1.543
+low traffic.mp4,25,car,95,175,81,81,3.378
+low traffic.mp4,27,car,138,168,31,31,1.293
+low traffic.mp4,28,car,168,296,129,129,5.38
+low traffic.mp4,31,car,185,193,9,9,0.375
+low traffic.mp4,32,car,184,216,28,33,1.376
+low traffic.mp4,34,car,237,242,6,6,0.25
+low traffic.mp4,35,car,266,366,101,101,4.213
+low traffic.mp4,36,car,292,292,1,1,0.042
+low traffic.mp4,41,car,308,340,33,33,1.376
+low traffic.mp4,42,car,309,334,26,26,1.084
+low traffic.mp4,43,car,327,327,1,1,0.042
+low traffic.mp4,44,car,336,336,1,1,0.042
+low traffic.mp4,46,car,348,501,145,154,6.423
+low traffic.mp4,47,car,368,369,2,2,0.083
+low traffic.mp4,49,car,383,452,70,70,2.92
+low traffic.mp4,51,car,406,430,24,25,1.043
+low traffic.mp4,54,car,412,414,3,3,0.125
+low traffic.mp4,55,car,415,462,48,48,2.002
+low traffic.mp4,56,car,434,451,18,18,0.751
+low traffic.mp4,59,car,460,512,53,53,2.211
+low traffic.mp4,60,car,475,522,48,48,2.002
+low traffic.mp4,63,car,479,479,1,1,0.042
+low traffic.mp4,65,car,501,599,99,99,4.129
+low traffic.mp4,66,car,503,657,188,155,6.465
+low traffic.mp4,70,car,530,531,2,2,0.083
+low traffic.mp4,72,car,536,572,37,37,1.543
+low traffic.mp4,79,car,592,660,56,69,2.878
+low traffic.mp4,81,car,601,601,1,1,0.042
+low traffic.mp4,86,car,629,631,3,3,0.125
+low traffic.mp4,89,car,646,706,61,61,2.544
+low traffic.mp4,90,truck,652,740,88,89,3.712
+low traffic.mp4,91,car,655,660,3,6,0.25
+low traffic.mp4,98,car,689,690,2,2,0.083
+low traffic.mp4,102,car,704,704,1,1,0.042
+low traffic.mp4,107,car,725,740,16,16,0.667
+no traffic video.mp4,111,bus,1,980,932,980,16.35
+no traffic video.mp4,114,bicycle,416,658,220,243,4.054
+no traffic video.mp4,117,car,603,637,25,35,0.584
+no traffic video.mp4,119,car,619,629,8,11,0.184
+no traffic video.mp4,121,car,934,1179,245,246,4.104
+traffic.mp4,123,car,1,540,514,540,10.8
+traffic.mp4,124,car,1,599,599,599,11.98
+traffic.mp4,125,car,1,599,599,599,11.98
+traffic.mp4,126,car,1,303,297,303,6.06
+traffic.mp4,127,car,1,329,324,329,6.58
+traffic.mp4,128,car,1,525,525,525,10.5
+traffic.mp4,129,car,1,450,445,450,9.0
+traffic.mp4,130,car,1,599,596,599,11.98
+traffic.mp4,131,car,1,274,236,274,5.48
+traffic.mp4,132,car,1,51,50,51,1.02
+traffic.mp4,133,car,1,29,27,29,0.58
+traffic.mp4,134,car,1,599,593,599,11.98
+traffic.mp4,135,car,1,599,599,599,11.98
+traffic.mp4,136,car,1,599,599,599,11.98
+traffic.mp4,137,car,1,565,565,565,11.3
+traffic.mp4,138,bus,1,599,601,599,11.98
+traffic.mp4,139,car,1,16,10,16,0.32
+traffic.mp4,140,car,1,47,47,47,0.94
+traffic.mp4,141,car,1,20,16,20,0.4
+traffic.mp4,142,car,1,599,594,599,11.98
+traffic.mp4,143,bus,1,599,599,599,11.98
+traffic.mp4,144,motorcycle,2,81,51,80,1.6
+traffic.mp4,145,car,5,599,531,595,11.9
+traffic.mp4,146,motorcycle,11,55,11,45,0.9
+traffic.mp4,147,motorcycle,13,15,3,3,0.06
+traffic.mp4,148,motorcycle,15,204,145,190,3.8
+traffic.mp4,149,motorcycle,28,97,57,70,1.4
+traffic.mp4,150,car,35,599,532,565,11.3
+traffic.mp4,151,motorcycle,47,105,34,59,1.18
+traffic.mp4,154,motorcycle,53,92,25,40,0.8
+traffic.mp4,156,motorcycle,80,93,5,14,0.28
+traffic.mp4,158,motorcycle,86,169,68,84,1.68
+traffic.mp4,159,motorcycle,91,146,33,56,1.12
+traffic.mp4,162,motorcycle,118,274,138,157,3.14
+traffic.mp4,164,truck,134,193,34,60,1.2
+traffic.mp4,165,motorcycle,158,208,45,51,1.02
+traffic.mp4,168,car,180,599,413,420,8.4
+traffic.mp4,169,motorcycle,184,238,55,55,1.1
+traffic.mp4,171,motorcycle,203,341,131,139,2.78
+traffic.mp4,173,motorcycle,220,241,19,22,0.44
+traffic.mp4,174,motorcycle,227,229,3,3,0.06
+traffic.mp4,177,motorcycle,243,424,165,182,3.64
+traffic.mp4,178,car,271,286,16,16,0.32
+traffic.mp4,179,motorcycle,273,317,24,45,0.9
+traffic.mp4,180,motorcycle,307,313,7,7,0.14
+traffic.mp4,181,motorcycle,315,354,20,40,0.8
+traffic.mp4,182,car,315,599,281,285,5.7
+traffic.mp4,184,motorcycle,322,366,34,45,0.9
+traffic.mp4,186,truck,339,346,8,8,0.16
+traffic.mp4,189,motorcycle,351,545,170,195,3.9
+traffic.mp4,192,car,395,454,26,60,1.2
+traffic.mp4,196,motorcycle,413,426,14,14,0.28
+traffic.mp4,197,motorcycle,413,599,165,187,3.74
+traffic.mp4,198,bus,420,470,22,51,1.02
+traffic.mp4,199,motorcycle,425,455,11,31,0.62
+traffic.mp4,200,car,443,599,157,157,3.14
+traffic.mp4,201,motorcycle,448,463,10,16,0.32
+traffic.mp4,203,truck,451,599,80,149,2.98
+traffic.mp4,204,car,454,515,41,62,1.24
+traffic.mp4,207,motorcycle,472,498,20,27,0.54
+traffic.mp4,208,car,476,507,32,32,0.64
+traffic.mp4,210,motorcycle,484,485,2,2,0.04
+traffic.mp4,212,car,502,528,21,27,0.54
+traffic.mp4,215,car,515,599,39,85,1.7
+traffic.mp4,217,motorcycle,531,584,45,54,1.08
+traffic.mp4,218,car,537,599,48,63,1.26
+traffic.mp4,221,motorcycle,546,559,14,14,0.28
+traffic.mp4,223,motorcycle,550,599,45,50,1.0
+traffic.mp4,227,motorcycle,569,599,21,31,0.62
+traffic.mp4,232,motorcycle,587,599,13,13,0.26
+traffic.mp4,233,motorcycle,589,599,11,11,0.22
+traffic.mp4,235,bus,593,599,7,7,0.14
+traffic.mp4,237,car,599,599,1,1,0.02

@@ -1,0 +1,69 @@
+==================================================================
+  Level 6B - Corrected Logical Identities & Counts
+==================================================================
+  Merges approved & applied : 7
+  Kept separate (DIFFERENT)  : 47 -> 49
+  Kept separate (UNCERTAIN)  : 206 -> 138
+
+  Merge manifest (applied):
+    low traffic.mp4    frag  29 -> parent  32   [SAME_VEHICLE] MERGED
+    low traffic.mp4    frag  47 -> parent  49   [DIFFERENT_VEHICLE] NOT_MERGED
+    low traffic.mp4    frag  84 -> parent  66   [SAME_VEHICLE] MERGED
+    no traffic video.mp4 frag 112 -> parent 114   [SAME_VEHICLE] MERGED
+    traffic.mp4        frag 206 -> parent 138   [UNCERTAIN] NOT_MERGED
+    traffic.mp4        frag 219 -> parent 138   [SAME_VEHICLE] MERGED
+    traffic.mp4        frag 220 -> parent 189   [SAME_VEHICLE] MERGED
+    traffic.mp4        frag 222 -> parent 138   [SAME_VEHICLE] MERGED
+    traffic.mp4        frag 230 -> parent 138   [SAME_VEHICLE] MERGED
+
+  Corrected counts per video  (raw | stable):
+    Video                  Raw  Conservative      Car/ CarS     Moto/MotoS     Bus/BusS   Truck/TruckS   Bike/BikeS
+    ----------------------------------------------------------------------------------------------------
+    low traffic.mp4         50            39    47/47        0/0         0/0         3/3         0/0    
+    no traffic video.mp4     6             5     3/3         0/0         1/1         0/0         2/2    
+    traffic.mp4             85            75    35/34       36/36        6/5         8/10        0/0    
+
+  Delta vs original  (raw | stable):
+    low traffic.mp4      total 52 -> 50 (-2)   conservative 41 -> 39
+      car          raw 49 -> 47 (-2)   stable 49 -> 47 (-2)
+      truck        raw 3 -> 3 (+0)   stable 3 -> 3 (+0)
+    no traffic video.mp4 total 7 -> 6 (-1)   conservative 6 -> 5
+      car          raw 3 -> 3 (+0)   stable 3 -> 3 (+0)
+      bus          raw 1 -> 1 (+0)   stable 1 -> 1 (+0)
+      bicycle      raw 3 -> 2 (-1)   stable 3 -> 2 (-1)
+    traffic.mp4          total 89 -> 85 (-4)   conservative 77 -> 75
+      car          raw 35 -> 35 (+0)   stable 34 -> 34 (+0)
+      motorcycle   raw 37 -> 36 (-1)   stable 37 -> 36 (-1)
+      bus          raw 8 -> 6 (-2)   stable 8 -> 5 (-3)
+      truck        raw 9 -> 8 (-1)   stable 10 -> 10 (+0)
+
+  OVERALL total: 148 -> 141 (-7)  => DECREASED
+
+  Validation: ALL CHECKS PASSED
+    [PASS] exactly 7 merges applied  approved merges = 7
+    [PASS] all 7 merges applied exactly once  {(222, 138): 1, (29, 32): 1, (112, 114): 1, (220, 189): 1, (219, 138): 1, (230, 138): 1, (84, 66): 1}
+    [PASS] all merged fragments absent as logical tracks  leftover fragments=set()
+    [PASS] parent 66 present after merge (84->66)  video=low traffic.mp4
+    [PASS] parent 32 present after merge (29->32)  video=low traffic.mp4
+    [PASS] parent 114 present after merge (112->114)  video=no traffic video.mp4
+    [PASS] parent 138 present after merge (222->138)  video=traffic.mp4
+    [PASS] parent 138 present after merge (219->138)  video=traffic.mp4
+    [PASS] parent 138 present after merge (230->138)  video=traffic.mp4
+    [PASS] parent 189 present after merge (220->189)  video=traffic.mp4
+    [PASS] 47 not merged into 49 (DIFFERENT_VEHICLE)  47/49 remain separate
+    [PASS] 47 present as logical track
+    [PASS] 49 present as logical track
+    [PASS] 206 not merged into 138 (UNCERTAIN)
+    [PASS] 206 present as logical track
+    [PASS] 138 present as logical track
+    [PASS] trajectory row count preserved  15491 -> 15491
+    [PASS] no original file overwritten  level6b/ contains only new files
+    [PASS] counts equal sum of merge removals  148 -> 141 (= -7)
+
+  Outputs written:
+    C:\Users\haris\Traffic_project_ML\data\processed\level6b\level6b_count_comparison.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level6b\level6b_count_summary.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level6b\level6b_merge_manifest.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level6b\level6b_track_summary.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level6b\level6b_trajectories.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level6b\level6b_validation.csv

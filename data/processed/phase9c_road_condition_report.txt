@@ -1,0 +1,102 @@
+============================================================================
+  PHASE 9C - ROAD CONDITION LAYER REPORT
+============================================================================
+  Mode used  : mock
+  Records    : 8
+
+  1. WHAT PHASE 9C DOES
+     A configurable road-condition data layer producing
+     normalized, explainable per-road outputs: surface /
+     construction / closure / flooding / incident status plus
+     overall_road_condition, road_risk, confidence and a reason.
+     It is independent of Phase 9A (traffic), Phase 9B (weather)
+     and the traffic videos; NO association is made to any video.
+
+  2. INPUT SCHEMA
+     config/road_condition_config.json -> test_roads[] and
+     manual_records[] (plus programmatic input). Required fields:
+     road_id, road_name, latitude, longitude; optional status
+     fields default to UNKNOWN and are normalized.
+
+  3. SUPPORTED DATA MODES
+     live   : external source (NOT configured - never fabricated)
+     manual : user-supplied records from config/manual_records
+     mock   : deterministic, reproducible test records
+     unknown: any record that cannot be sourced (data_mode=unknown)
+
+  4. ROAD-CONDITION CATEGORIES
+     road_surface: GOOD | MODERATE | POOR | UNKNOWN
+     construction: NONE | ACTIVE | UNKNOWN
+     closure     : OPEN | PARTIAL | CLOSED | UNKNOWN
+     flooding    : NONE | POSSIBLE | SEVERE | UNKNOWN
+     incident    : NONE | REPORTED | UNKNOWN
+     overall     : GOOD | MODERATE | POOR | RESTRICTED | UNKNOWN
+     road_risk   : LOW | MODERATE | HIGH | UNKNOWN
+
+  5. EXPLAINABLE RISK LOGIC (deterministic points)
+     surface GOOD=0 MODERATE=1 POOR=3 UNKNOWN=0(unknown)
+     construction NONE=0 ACTIVE=2
+     closure OPEN=0 PARTIAL=4 CLOSED=6
+     flooding NONE=0 POSSIBLE=1 SEVERE=5
+     incident NONE=0 REPORTED=2
+     CLOSED/PARTIAL closure or SEVERE flooding -> RESTRICTED.
+     else penalty: 0=GOOD, 1-2=MODERATE, 3-4=POOR, >=5=RESTRICTED.
+     risk: RESTRICTED/POOR=HIGH, MODERATE=MODERATE, GOOD=LOW,
+           UNKNOWN overall=UNKNOWN risk.
+
+  6. HOW UNKNOWN DATA IS HANDLED
+     - Missing fields become UNKNOWN (never GOOD).
+     - A GOOD label is suppressed whenever any field is UNKNOWN.
+     - All-five UNKNOWN -> overall UNKNOWN and risk UNKNOWN.
+     - Confidence falls x0.80 per UNKNOWN field, plus x0.90 for
+       manual and x0.60 for mock data (test data is not treated
+       as real-world evidence).
+
+  7. TEST/MOCK LIMITATIONS
+     Mock records are DETERMINISTIC TEST DATA with fictional
+     coordinates (labelled TEST-RD-*, lat/lon near null island).
+     They exercise every scoring branch but describe NO real
+     road; they must never be presented as real-world conditions.
+
+  8. LIVE DATA STATUS
+     No live road-condition provider is currently configured.
+     The live branch raises RoadConditionError instead of
+     fabricating data; live records will be produced only once
+     a real source (agency feed / sensor API) is integrated.
+
+  9. VALIDATION
+     [PASS] records processed  8 records
+     [PASS] all labels from allowed category sets  0
+     [PASS] confidence within [0,1]  0
+     [PASS] UNKNOWN data never treated as GOOD  0
+     [PASS] all-UNKNOWN rows -> UNKNOWN overall + risk  0 all-UNKNOWN records
+     [PASS] no live records (no live provider configured); mode/source/label consistent  0
+     [PASS] deterministic mock results
+     [PASS] phase9a files unchanged  3 files hashed
+     [PASS] phase9b files unchanged  3 files hashed
+     [PASS] level8 files unchanged  6 files hashed
+     [PASS] level7d files unchanged  7 files hashed
+
+  10. PROTECTED-FILE VERIFICATION (SHA-256 before/after)
+      phase9a files unchanged: PASS  (3 files hashed)
+      phase9b files unchanged: PASS  (3 files hashed)
+      level8 files unchanged: PASS  (6 files hashed)
+      level7d files unchanged: PASS  (7 files hashed)
+      Raw videos: not opened or rewritten; YOLO/ByteTrack: not run.
+
+  11. CONNECTION TO PHASE 9D (future)
+      Phase 9D will combine three INDEPENDENT layers:
+        traffic activity  (9A) + weather impact (9B)
+        + road condition  (9C)
+      Each layer is already isolated: a road can be scored using the
+      explainable outputs produced here (overall_road_condition, risk,
+      confidence, reason).  This phase does NOT link roads to videos.
+
+  12. FILES CREATED
+      C:\Users\haris\Traffic_project_ML\data\processed\phase9c_road_conditions.csv
+      C:\Users\haris\Traffic_project_ML\data\processed\phase9c_road_condition_report.txt
+      C:\Users\haris\Traffic_project_ML\data\processed\phase9c_validation.csv
+      C:\Users\haris\Traffic_project_ML\src\road_condition_provider.py
+      C:\Users\haris\Traffic_project_ML\src\road_condition_engine.py
+      C:\Users\haris\Traffic_project_ML\src\test_phase9c_road_conditions.py
+      C:\Users\haris\Traffic_project_ML\config\road_condition_config.json

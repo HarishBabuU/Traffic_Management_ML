@@ -1,0 +1,15 @@
+check,ok,detail
+required columns present,PASS,
+route scores numeric 0-100 or UNKNOWN,PASS,[]
+route confidence within 0-1,PASS,[]
+routes categories match score bands,PASS,[]
+UNKNOWN route never converted to GOOD,PASS,[]
+all-UNKNOWN routes remain UNKNOWN,PASS,[]
+invalid routes explicitly marked invalid,PASS,[]
+score never built from zero known segments,PASS,[]
+mock routes remain labelled mock,PASS,[]
+no fabricated live data,PASS,[]
+duplicate route IDs rejected,PASS,['ROUTE-A']
+single RECOMMENDED route,PASS,['ROUTE-D']
+RECOMMENDED has highest eligible score,PASS,84.0
+deterministic repeated execution,PASS,

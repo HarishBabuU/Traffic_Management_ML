@@ -1,0 +1,50 @@
+========================================================================
+  Level 7 - Post-Level-6B Track Quality Diagnosis (READ-ONLY)
+========================================================================
+  Source: validated Level 6B outputs (level6b/).
+  Candidates only - no merges/relabels/count changes.
+
+  THRESHOLDS USED
+    Short track          : rows or duration <= 4 frames (Tier1 <= 2)
+    Little movement      : net < 20px AND path < 50px (>= 4 rows)
+    Large jump           : single jump >= 300px (Tier1) or >= 150px AND >3x median+50px (Tier2)
+    Erratic/wandering    : path >= 80px AND > 3x net displacement (>=6 rows)
+    Duplicate (overlap)  : >= 3 shared frames AND (mean cdist <= 50px OR max IoU >= 0.45)
+    Duplicate (gap)      : gap 1..20 frames AND boundary cdist <= 40px
+    Class inconsistency  : raw!=stable OR agreement < 90% OR hyst switches > 0
+
+  TRACK-DURATION DISTRIBUTION  (frames)
+    Scope                   min    p5   p10   p25  median   p75   p90   p95   max
+    ALL videos (duration)     1     1     2     9      37    99   480   599   980
+    ALL videos (rows)         1     1     2     7      31    83   461   594   932
+    low traffic.mp4 (duration)      1     1     1     3      31    52    99   129   155
+    low traffic.mp4 (rows)           1     1     1     3      26    49    99   124   144
+    no traffic video.mp4 (duration)      1     1     1     1      35   246   980   980   980
+    no traffic video.mp4 (rows)           1     1     1     1      25   245   932   932   932
+    traffic.mp4 (duration)      1     1     3    14      51   190   599   599   599
+    traffic.mp4 (rows)           1     1     3    11      34   165   565   599   599
+
+  CANDIDATE COUNTS  (per category / per video)
+    Short-track candidates           TOTAL  27
+        low traffic.mp4               15
+        no traffic video.mp4           1
+        traffic.mp4                   11
+        Tier1: 19   Tier2: 8
+    Spatial-suspicious candidates    TOTAL  39
+        low traffic.mp4               10
+        no traffic video.mp4           2
+        traffic.mp4                   27
+        Tier1: 1   Tier2: 38
+    Duplicate-identity candidates    TOTAL  21
+        low traffic.mp4                7
+        no traffic video.mp4           0
+        traffic.mp4                   14
+        Tier1: 4   Tier2: 17
+    Class-consistency candidates     TOTAL  12
+        low traffic.mp4                4
+        no traffic video.mp4           2
+        traffic.mp4                    6
+        Tier1: 9   Tier2: 3
+
+  NOTE: identical trajectories across two track IDs are NOT concluded to be the same vehicle here.
+  These are candidates for later visual verification only.

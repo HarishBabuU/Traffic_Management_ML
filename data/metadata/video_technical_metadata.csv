@@ -1,0 +1,4 @@
+filename,status,width,height,fps,frame_count,duration_seconds,codec
+low traffic.mp4,OK,1920,1080,23.98,741,30.91,h264
+no traffic video.mp4,OK,1920,1080,59.94,1180,19.69,h264
+traffic.mp4,OK,1280,720,50.0,600,12.0,h264

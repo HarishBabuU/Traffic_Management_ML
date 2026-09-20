@@ -1,0 +1,12 @@
+metric,value,note
+total_corrected_identities,122,unique identities (track summary rows)
+total_conservative_identities,108,>= 3 frames & conf >= 0.3
+total_trajectory_rows,15491,rows in level7d_trajectories.csv (includes merge-union duplicate-frame rows)
+number_of_videos,3,"['low traffic.mp4', 'no traffic video.mp4', 'traffic.mp4']"
+classes_present,5,"car,motorcycle,bus,truck,bicycle"
+class_car_stable_count,78,63.93 % of all corrected identities
+class_motorcycle_stable_count,34,27.87 % of all corrected identities
+class_bus_stable_count,5,4.10 % of all corrected identities
+class_truck_stable_count,4,3.28 % of all corrected identities
+class_bicycle_stable_count,1,0.82 % of all corrected identities
+duration_seconds_pooled_matrix_uses,see below,duration stats and time bins calculated per-video from raw container FPS

@@ -1,0 +1,15 @@
+check,ok,detail
+input trajectory row count == output,PASS,15491 -> 15491
+no unexpected track IDs changed,PASS,set()
+all approved source IDs mapped correctly,PASS,"applied={('traffic.mp4', 224): 1, ('traffic.mp4', 228): 1, ('traffic.mp4', 229): 1, ('traffic.mp4', 234): 1, ('traffic.mp4', 236): 1, ('low traffic.mp4', 101): 1, ('no traffic video.mp4', 118): 1, ('traffic.mp4', 167): 1, ('traffic.mp4', 160): 1, ('low traffic.mp4', 45): 1, ('traffic.mp4', 176): 1, ('traffic.mp4', 153): 1, ('traffic.mp4', 163): 1} leftover=set()"
+65 and 79 remain separate identities,PASS,"65 present=True, 79 present=True"
+all frames of 224+228+229+234+236 assigned to 138,PASS,22 rows -> 22 landed in 138
+all frames of 101 assigned to 90,PASS,1 rows -> 1 landed in 90
+all frames of 118 assigned to 114,PASS,1 rows -> 1 landed in 114
+all frames of 167 assigned to 126,PASS,1 rows -> 1 landed in 126
+all frames of 160+176 assigned to 131,PASS,15 rows -> 15 landed in 131
+all frames of 153 assigned to 146,PASS,4 rows -> 4 landed in 146
+all frames of 163 assigned to 150,PASS,461 rows -> 461 landed in 150
+all frames of 45 assigned to 46,PASS,1 rows -> 1 landed in 46
+no source Level 7B file modified,PASS,level7b/ hashes unchanged
+identity reduction equals independent merges applied,PASS,137 -> 124 (expected -13)

@@ -1,0 +1,8 @@
+check,ok,detail
+all interval input rows processed,PASS,"15 in, 15 interval rows out"
+no NaN/Inf in computed activity_rate,PASS,0
+no negative identity/observation counts,PASS,0
+labels restricted to LOW/MODERATE/HEAVY/CONGESTED,PASS,[]
+deterministic (rerun on identical inputs reproduces labels),PASS,
+Level 7D files unchanged,PASS,7 files hashed
+Level 8 files unchanged,PASS,6 files hashed

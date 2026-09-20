@@ -1,0 +1,119 @@
+{
+  "_comment": "Phase 9E - Route Recommendation Engine configuration. The engine consumes Phase 9D road scores (data/processed/phase9d_road_scores.csv) and never modifies them. All candidate routes below are DETERMINISTIC MOCK/TEST routes using the fictional MOCK-ROAD-* IDs from Phase 9D. They describe NO real roads/routes/distances/travel times. Any distance_km / travel_time_minutes present are explicit FICTIONAL mock values used only to exercise distance-weighted logic. No secrets stored.",
+  "source": {
+    "phase9d_scores_csv": "data/processed/phase9d_road_scores.csv",
+    "columns": {
+      "road_id": "road_id",
+      "road_name": "road_name",
+      "overall_score": "overall_score",
+      "confidence": "confidence",
+      "data_mode": "data_mode",
+      "is_mock": "is_mock",
+      "data_source": "data_source",
+      "suitability_category": "suitability_category"
+    }
+  },
+  "scoring": {
+    "mode": "automatic",
+    "round_decimals": 1,
+    "_comment": "Distance-weighted averaging is used ONLY when every segment of a route carries an explicit non-negative distance_km. Otherwise equal segment weighting is used over the KNOWN segments. UNKNOWN segments never contribute a score; they are counted and reported."
+  },
+  "confidence": {
+    "mode_factors": {"live": 1.0, "manual": 0.9, "mock": 0.7, "unknown": 0.25},
+    "round_decimals": 2,
+    "floor": 0.05,
+    "_comment": "route_confidence = mean(Phase 9D per-segment confidence over ALL segments) * min(per-segment data-mode factor) * (known_segment_count / total_segment_count), clipped to [0.05, 1.0]. Conservative and explainable: unknown segments, mock mode, and missing data all lower confidence; it is never a precision-heavy fake."
+  },
+  "suitability_thresholds": [
+    {"min": 80, "max": 100, "label": "GOOD"},
+    {"min": 60, "max": 79, "label": "MODERATE"},
+    {"min": 40, "max": 59, "label": "CAUTION"},
+    {"min": 20, "max": 39, "label": "POOR"},
+    {"min": 0, "max": 19, "label": "VERY_POOR"}
+  ],
+  "recommendation_statuses": [
+    {"status": "RECOMMENDED", "_comment": "Highest-scoring eligible route (numeric route_score) among the candidate set. Single pick; ties broken by confidence, then known count, then route_id."},
+    {"status": "ELIGIBLE", "_comment": "Valid route with a numeric route_score that is not the top pick."},
+    {"status": "INSUFFICIENT_DATA", "_comment": "Valid route with zero known segments (every segment score UNKNOWN); route_score stays UNKNOWN."},
+    {"status": "INVALID_ROUTE", "_comment": "Route is invalid: references a nonexistent road_id, has a duplicate route_id, empty segment list, or invalid segment_order."}
+  ],
+  "routes": [
+    {
+      "_comment": "MOCK/TEST route. All three segments have known Phase 9D scores; no explicit distances, so equal weighting is used.",
+      "route_id": "ROUTE-A",
+      "route_name": "Fictional Mock Route A (MOCK/TEST)",
+      "data_mode": "mock",
+      "data_source": "phase9e-mock-route-det",
+      "segments": [
+        {"segment_order": 1, "road_id": "MOCK-ROAD-01", "road_name": "Fictional Integration Road 01 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null},
+        {"segment_order": 2, "road_id": "MOCK-ROAD-02", "road_name": "Fictional Integration Road 02 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null},
+        {"segment_order": 3, "road_id": "MOCK-ROAD-03", "road_name": "Fictional Integration Road 03 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null}
+      ]
+    },
+    {
+      "_comment": "MOCK/TEST route. Single known segment.",
+      "route_id": "ROUTE-B",
+      "route_name": "Fictional Mock Route B (MOCK/TEST)",
+      "data_mode": "mock",
+      "data_source": "phase9e-mock-route-det",
+      "segments": [
+        {"segment_order": 1, "road_id": "MOCK-ROAD-04", "road_name": "Fictional Integration Road 04 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null}
+      ]
+    },
+    {
+      "_comment": "MOCK/TEST route. Explicit FICTIONAL mock distances and travel times (NOT real), used to exercise distance-weighted scoring.",
+      "route_id": "ROUTE-C",
+      "route_name": "Fictional Mock Route C (MOCK/TEST)",
+      "data_mode": "mock",
+      "data_source": "phase9e-mock-route-det",
+      "segments": [
+        {"segment_order": 1, "road_id": "MOCK-ROAD-01", "road_name": "Fictional Integration Road 01 (MOCK/TEST)", "distance_km": 2.0, "travel_time_minutes": 10},
+        {"segment_order": 2, "road_id": "MOCK-ROAD-02", "road_name": "Fictional Integration Road 02 (MOCK/TEST)", "distance_km": 8.0, "travel_time_minutes": 30}
+      ]
+    },
+    {
+      "_comment": "MOCK/TEST route. Contains one UNKNOWN-score segment (MOCK-ROAD-07); score computed from known segments only.",
+      "route_id": "ROUTE-D",
+      "route_name": "Fictional Mock Route D (MOCK/TEST)",
+      "data_mode": "mock",
+      "data_source": "phase9e-mock-route-det",
+      "segments": [
+        {"segment_order": 1, "road_id": "MOCK-ROAD-05", "road_name": "Fictional Integration Road 05 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null},
+        {"segment_order": 2, "road_id": "MOCK-ROAD-07", "road_name": "Fictional Integration Road 07 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null}
+      ]
+    },
+    {
+      "_comment": "MOCK/TEST route. Every segment score is UNKNOWN -> route score UNKNOWN, INSUFFICIENT_DATA.",
+      "route_id": "ROUTE-E",
+      "route_name": "Fictional Mock Route E (MOCK/TEST)",
+      "data_mode": "mock",
+      "data_source": "phase9e-mock-route-det",
+      "segments": [
+        {"segment_order": 1, "road_id": "MOCK-ROAD-07", "road_name": "Fictional Integration Road 07 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null},
+        {"segment_order": 2, "road_id": "MOCK-ROAD-07", "road_name": "Fictional Integration Road 07 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null}
+      ]
+    },
+    {
+      "_comment": "MOCK/TEST route. References a nonexistent road ID -> INVALID_ROUTE.",
+      "route_id": "ROUTE-F",
+      "route_name": "Fictional Mock Route F (MOCK/TEST)",
+      "data_mode": "mock",
+      "data_source": "phase9e-mock-route-det",
+      "segments": [
+        {"segment_order": 1, "road_id": "MOCK-ROAD-01", "road_name": "Fictional Integration Road 01 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null},
+        {"segment_order": 2, "road_id": "NONEXISTENT-ROAD-X9", "road_name": "Nonexistent Road (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null}
+      ]
+    },
+    {
+      "_comment": "MOCK/TEST route with a DUPLICATE route_id (same as ROUTE-A). Duplicate route IDs are rejected as INVALID_ROUTE and excluded from ranking.",
+      "route_id": "ROUTE-A",
+      "route_name": "Fictional Mock Route A duplicate (MOCK/TEST)",
+      "data_mode": "mock",
+      "data_source": "phase9e-mock-route-det",
+      "segments": [
+        {"segment_order": 1, "road_id": "MOCK-ROAD-01", "road_name": "Fictional Integration Road 01 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null},
+        {"segment_order": 2, "road_id": "MOCK-ROAD-02", "road_name": "Fictional Integration Road 02 (MOCK/TEST)", "distance_km": null, "travel_time_minutes": null}
+      ]
+    }
+  ]
+}

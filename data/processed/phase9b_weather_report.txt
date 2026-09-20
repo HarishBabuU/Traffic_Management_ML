@@ -1,0 +1,87 @@
+============================================================================
+  PHASE 9B - WEATHER INTEGRATION REPORT
+============================================================================
+  Provider  : Open-Meteo (live) / deterministic mock (offline)
+  Mode used : auto
+  Locations : 1 configured, 1 ok, 0 failed
+
+  1. WHAT WAS IMPLEMENTED
+     A standalone weather module in two layers:
+       src/weather_provider.py     -> normalized weather reading
+       src/weather_impact_engine.py-> category + impact rules
+     It is intentionally SEPARATE from Phase 9A traffic conditions
+     (phase9a_traffic_conditions.csv is never touched).
+
+  2. WEATHER PROVIDER
+     Open-Meteo current-weather API (free, no key). Location is ALWAYS
+     supplied explicitly as latitude/longitude; nothing is inferred for
+     the existing traffic videos. Provider is swappable via the same
+     normalized dict interface.
+
+  3. INPUT FORMAT
+     config/weather_config.json -> {locations:[{id, latitude, longitude, timestamp?}]}
+     or programmatic: WeatherProvider().get_weather(lat, lon, ts, mode)
+
+  4. OUTPUT FIELDS (phase9b_weather.csv)
+     location_id, latitude, longitude, timestamp, temperature_c, precipitation_mm, weather_code, weather_condition, wind_speed_kmh, visibility_km, humidity_pct, source, provider, is_mock, fallback_reason, weather_category, weather_traffic_impact, impact_score, impact_rule_basis
+
+  5. WEATHER CATEGORY RULES (from WMO weather_code)
+     CLEAR: 0-2 | LIGHT_RAIN: 51-57,61-63,80-81 | HEAVY_RAIN: 65,66-67,82
+     FOG: 45,48 | STORM: 95,96,99 | OTHER: everything else
+
+  6. WEATHER TRAFFIC-IMPACT RULES (risk signal only)
+     category: CLEAR=0 LIGHT_RAIN=1 HEAVY_RAIN=3 FOG=2 STORM=3 OTHER=1
+     rain mm/h: 0 / 0-2.5=1 / 2.5-7.6=2 / >7.6=3
+     wind km/h: <30=0 / 30-60=1 / >=60=2
+     visibility km: >=5=0 / <5=1 / <1=2 / <0.4=3   (missing -> assume worse)
+     score: <2 LOW | 2-3 MODERATE | >=4 HIGH
+
+  7. LIVE VS MOCK BEHAVIOR
+     Live weather was RETRIEVED successfully from Open-Meteo for the
+     configured location. Data is real; is_mock=False, source=live.
+     Mock fallback remains available for offline runs and is always
+     labelled is_mock=True / source='mock'; live data is never fabricated.
+
+  8. TEST RESULTS
+     See phase9b_validation.csv and src/test_phase9b_weather.py
+
+  9. VALIDATION
+     [PASS] no NaN/Inf where not allowed  1 rows
+     [PASS] weather categories from allowed set  0
+     [PASS] weather impact labels from allowed set  0
+     [PASS] no fabricated LIVE weather values  0
+     [PASS] mock mode clearly marked  0 mock rows
+     [PASS] deterministic mock results
+     [PASS] output schema consistent  identical key sets
+     [PASS] mode used  auto
+     [PASS] live weather attempted  yes (live data retrieved)
+     [PASS] no silent live->mock replacement without mock marking
+     [PASS] Phase 9A unchanged  3 phase9a files hashed
+     [PASS] Level 8 unchanged  6 level8 files hashed
+     [PASS] Level 7D unchanged  7 level7d files hashed
+
+  10. PROTECTED-FILE VERIFICATION
+      SHA-256 snapshots taken before and after execution.
+      Phase 9A unchanged: PASS  (3 phase9a files hashed)
+      Level 8 unchanged: PASS  (6 level8 files hashed)
+      Level 7D unchanged: PASS  (7 level7d files hashed)
+
+  11. LIMITATIONS
+      * Weather depends on the SUPPLIED location only.
+      * The existing traffic videos do NOT automatically provide a
+        geographic location; no city/road/GPS was assumed.
+      * Weather API data represents the requested location/time, not
+        necessarily the exact conditions in the historical videos.
+      * Weather_traffic_impact is a rule-based RISK signal, not proof
+        of traffic congestion.
+      * Live API availability depends on network/provider; if offline,
+        mock data is used and is never presented as real weather.
+
+  12. FILES CREATED
+      C:\Users\haris\Traffic_project_ML\data\processed\phase9b_weather.csv
+      C:\Users\haris\Traffic_project_ML\data\processed\phase9b_weather_report.txt
+      C:\Users\haris\Traffic_project_ML\data\processed\phase9b_validation.csv
+      C:\Users\haris\Traffic_project_ML\src\weather_provider.py
+      C:\Users\haris\Traffic_project_ML\src\weather_impact_engine.py
+      C:\Users\haris\Traffic_project_ML\src\test_phase9b_weather.py
+      C:\Users\haris\Traffic_project_ML\config\weather_config.json

@@ -1,0 +1,3 @@
+video,source_id,canonical_parent_id,source_class_stable,parent_class_stable,decision,applied
+low traffic.mp4,18,15,car,car,SAME_VEHICLE,MERGED
+traffic.mp4,157,154,motorcycle,motorcycle,SAME_VEHICLE,MERGED

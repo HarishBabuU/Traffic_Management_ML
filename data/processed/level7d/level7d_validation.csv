@@ -1,0 +1,10 @@
+check,ok,detail
+exactly 2 identity removals,PASS,124 -> 122 (delta -2)
+TID 18 absent from low traffic.mp4,PASS,
+TID 157 absent from traffic.mp4,PASS,
+canonical TID 15 remains,PASS,
+canonical TID 154 remains,PASS,
+trajectory row count remains 15491,PASS,15491 -> 15491
+no unexpected track IDs changed,PASS,set()
+all approved source IDs mapped exactly once,PASS,"applied={('low traffic.mp4', 18): 1, ('traffic.mp4', 157): 1} leftover=set()"
+Level 7C files unchanged,PASS,level7c/ hashes unchanged

@@ -1,0 +1,102 @@
+============================================================================
+  PHASE 9D - OVERALL ROAD SCORING ENGINE (explainable prototype)
+============================================================================
+  Records scored : 8
+
+  1. PURPOSE
+     Combine three independent layers - traffic activity (9A),
+     weather impact (9B), road condition risk (9C) - into a
+     single explainable 0-100 road suitability score.
+
+  2. INPUT LAYERS
+     A. traffic_activity : LOW/MODERATE/HEAVY/CONGESTED (9A)
+     B. weather_impact   : LOW/MODERATE/HIGH (9B)
+     C. road_risk        : LOW/MODERATE/HIGH (9C)
+     Each record carries an explicit road_id, observation_time,
+     source and data_mode.
+
+  3. TRAFFIC LIMITATION
+     Phase 9A labels are DATASET-RELATIVE ACTIVITY labels from
+     the available videos. They are NOT actual congestion, travel
+     time, road-capacity utilisation, or speed. This report uses
+     'traffic_activity' / 'traffic activity signal' terminology.
+
+  4. WEATHER LAYER
+     Uses the normalized Phase 9B weather-impact label. No live
+     weather is invented; any mock record is kept labelled mock.
+
+  5. ROAD-CONDITION LAYER
+     Uses the Phase 9C road_risk (and road_condition context).
+     UNKNOWN road data is NEVER treated as GOOD.
+
+  6. SCORE CALCULATION
+     score = sum(score_i * w_i) / sum(w_i over KNOWN layers)
+     Weights are renormalized over the known layers so they sum
+     to 100. UNKNOWN layers contribute no score and no weight.
+
+  7. WEIGHTS (prototype, documented)
+     traffic 40.0% | weather 25.0% | road 35.0%
+
+  8. SUB-SCORE MAPPINGS (prototype values, 0-100)
+     traffic: {'LOW': 100.0, 'MODERATE': 70.0, 'HEAVY': 40.0, 'CONGESTED': 15.0, 'UNKNOWN': None}
+     weather: {'LOW': 100.0, 'MODERATE': 70.0, 'HIGH': 35.0, 'UNKNOWN': None}
+     road   : {'LOW': 100.0, 'MODERATE': 65.0, 'HIGH': 25.0, 'UNKNOWN': None}
+
+  9. UNKNOWN HANDLING
+     UNKNOWN is never converted to a good score. With >=1 known
+     layer the score uses only known layers (weights renormalized,
+     confidence reduced). With 0 known layers the score is UNKNOWN
+     and suitability is UNKNOWN.
+
+  10. CONFIDENCE CALCULATION
+      conf = (known_layers/3) * (0.8^unknown_layers) * min(mode_factor)
+      mode_factors live=1.0 manual=0.85 mock=0.55 unknown=0.25;
+      floor 0.05. Mock data and UNKNOWN layers lower confidence.
+
+  11. SUITABILITY CATEGORIES (from 0-100)
+      80-100 GOOD | 60-79 MODERATE | 40-59 CAUTION |
+      20-39 POOR | 0-19 VERY_POOR | UNKNOWN -> UNKNOWN
+
+  12. MOCK/TEST LIMITATIONS
+      The scored records are DETERMINISTIC MOCK/TEST integration
+      records with explicit fictional road IDs (MOCK-ROAD-*) and
+      data_mode='mock', is_mock=True. They NEVER describe a real
+      road and must not be presented as real-world evidence.
+
+  13. WHY NO REAL ROAD MAPPING WAS INVENTED
+      * Phase 9A records are per (video, interval) and carry no road_id.
+      * Phase 9B records are per weather location and carry no road mapping.
+      * Phase 9C records are per fictional TEST-RD-* road and carry no video/weather mapping.
+      * No shared road_id/location/time key exists across the three layers.
+      * Therefore the deliverable scores ONLY explicit deterministic MOCK/TEST
+      * integration records (fictional MOCK-ROAD-* IDs), clearly labelled mock.
+
+  14. HOW PHASE 9E WILL USE THIS LAYER
+      Phase 9E (route recommendation) can compare candidate routes
+      using this layer's per-road outputs: overall_score, confidence,
+      suitability_category and reason. No 'best road' is chosen in
+      this phase.
+
+  VALIDATION
+    [PASS] required columns present  []
+    [PASS] all scores 0-100 or UNKNOWN  0
+    [PASS] confidence within 0-1  0
+    [PASS] suitability from allowed set  0
+    [PASS] UNKNOWN layer never converted to a good sub-score  0
+    [PASS] UNKNOWN layer always reduces confidence  0
+    [PASS] effective weights valid (0-100)  0
+    [PASS] known-layer weight renormalization sums to 100  0
+    [PASS] all-UNKNOWN produces UNKNOWN score  0
+    [PASS] deterministic repeated calculation
+    [PASS] mock records remain labelled mock  0
+    [PASS] no invalid/empty road IDs  0
+    [PASS] no fabricated live records  0
+    [PASS] phase9a files unchanged  3 files hashed
+    [PASS] phase9b files unchanged  3 files hashed
+    [PASS] phase9c files unchanged  3 files hashed
+    [PASS] level8 files unchanged  6 files hashed
+    [PASS] level7d files unchanged  7 files hashed
+
+  IMPORTANT DISCLAIMER
+  This is an explainable prototype road suitability score and is
+  not a calibrated traffic-engineering or navigation score.

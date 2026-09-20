@@ -1,0 +1,14 @@
+check,ok,detail
+no NaN/Inf where not allowed,PASS,1 rows
+weather categories from allowed set,PASS,0
+weather impact labels from allowed set,PASS,0
+no fabricated LIVE weather values,PASS,0
+mock mode clearly marked,PASS,0 mock rows
+deterministic mock results,PASS,
+output schema consistent,PASS,identical key sets
+mode used,PASS,auto
+live weather attempted,PASS,yes (live data retrieved)
+no silent live->mock replacement without mock marking,PASS,
+Phase 9A unchanged,PASS,3 phase9a files hashed
+Level 8 unchanged,PASS,6 level8 files hashed
+Level 7D unchanged,PASS,7 level7d files hashed

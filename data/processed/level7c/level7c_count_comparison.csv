@@ -1,0 +1,20 @@
+row,video,class,original_raw,corrected_raw,raw_delta,original_stable,corrected_stable,stable_delta
+1,low traffic.mp4,car,45,44,-1,45,44,-1
+2,low traffic.mp4,motorcycle,0,0,0,0,0,0
+3,low traffic.mp4,bus,0,0,0,0,0,0
+4,low traffic.mp4,truck,2,1,-1,2,1,-1
+5,low traffic.mp4,bicycle,0,0,0,0,0,0
+6,low traffic.mp4,__TOTAL__,47,45,-2,47,45,-2
+7,no traffic video.mp4,car,3,3,0,3,3,0
+8,no traffic video.mp4,motorcycle,0,0,0,0,0,0
+9,no traffic video.mp4,bus,1,1,0,1,1,0
+10,no traffic video.mp4,truck,0,0,0,0,0,0
+11,no traffic video.mp4,bicycle,2,1,-1,2,1,-1
+12,no traffic video.mp4,__TOTAL__,6,5,-1,6,5,-1
+13,traffic.mp4,car,35,32,-3,34,32,-2
+14,traffic.mp4,motorcycle,36,35,-1,36,35,-1
+15,traffic.mp4,bus,5,4,-1,4,4,0
+16,traffic.mp4,truck,8,3,-5,10,3,-7
+17,traffic.mp4,bicycle,0,0,0,0,0,0
+18,traffic.mp4,__TOTAL__,84,74,-10,84,74,-10
+19,__ALL_VIDEOS__,__TOTAL__,137,124,-13,137,124,-13

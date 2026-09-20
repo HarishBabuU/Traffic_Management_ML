@@ -1,0 +1,10 @@
+route_id,cctv_id,source_video,status,resolution,fps,total_frames,frames_processed,unique_tracks,conservative_tracks,cars,motorcycles,buses,trucks,bicycles,elapsed_s
+route_a,CCTV-A01,CCTV-A01.mp4,OK,1280x720,25.0,1501,1501,233,216,217,0,8,8,0,171.3
+route_a,CCTV-A02,CCTV-A02.mp4,OK,1280x720,25.0,233,233,45,41,45,0,0,0,0,28.6
+route_a,CCTV-A03,CCTV-A03.mp4,OK,2560x1440,29.97,1657,1657,3,2,3,0,0,0,0,222.9
+route_b,CCTV-B01,CCTV-B01.mp4,OK,1920x1080,25.0,150,150,34,28,28,2,3,1,0,18.8
+route_b,CCTV-B02,CCTV-B02.mp4,OK,1280x720,25.0,391,391,50,45,21,19,10,0,0,46.1
+route_b,CCTV-B03,CCTV-B03.mp4,OK,1280x720,25.0,473,473,4,2,4,0,0,0,0,53.3
+route_c,CCTV-C01,CCTV-C01.mp4,OK,1280x720,30.0,5721,5721,515,375,509,0,4,2,0,665.1
+route_c,CCTV-C02,CCTV-C02.mp4,OK,3840x2160,60.0,720,720,1,1,0,0,0,1,0,112.5
+route_c,CCTV-C03,CCTV-C03.mp4,OK,3840x2160,29.97,241,241,19,15,19,0,0,0,0,38.2

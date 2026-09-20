@@ -1,0 +1,25 @@
+{
+  "_comment": "Weather integration configuration (Phase 9B). Location(s) here are EXPLICITLY supplied inputs; they are NOT attached to any existing traffic video. The example coordinates below are supplied by the user for testing only.",
+  "provider": "open-meteo",
+  "mode": "auto",
+  "allow_mock_fallback": true,
+  "api": {
+    "current_url": "https://api.open-meteo.com/v1/forecast",
+    "timeout_seconds": 20,
+    "env_url_override": "WEATHER_API_URL",
+    "env_key": null,
+    "note": "Open-Meteo is free and requires no API key."
+  },
+  "mock": {
+    "deterministic": true,
+    "_comment": "Mock output is a pure function of (latitude, longitude, timestamp): identical inputs always yield identical weather."
+  },
+  "locations": [
+    {
+      "id": "example_location",
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "label": "Explicitly supplied example coordinates (testing only; not associated with any traffic video)"
+    }
+  ]
+}

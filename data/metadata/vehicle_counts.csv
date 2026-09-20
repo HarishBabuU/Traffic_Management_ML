@@ -1,0 +1,4 @@
+filename,status,width,height,fps,total_frames,duration_seconds,frames_processed,unique_vehicle_count,unique_by_class,avg_detections_per_frame
+low traffic.mp4,OK,1920,1080,23.98,741,30.91,741,57,"{'car': 54, 'truck': 3}",2.38
+no traffic video.mp4,OK,1920,1080,59.94,1180,19.69,1180,10,"{'bus': 1, 'bicycle': 4, 'car': 5}",1.22
+traffic.mp4,OK,1280,720,50.0,600,12.0,600,129,"{'car': 39, 'bus': 16, 'motorcycle': 58, 'truck': 16}",21.21

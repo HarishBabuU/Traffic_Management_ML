@@ -1,0 +1,49 @@
+==================================================================
+  Level 7B - Corrected Identities after Visual Verification
+==================================================================
+  Applied merges (Level 7A SAME_VEHICLE):
+    low traffic.mp4    frag  76 -> parent  66   [SAME_VEHICLE] MERGED
+    low traffic.mp4    frag  85 -> parent  66   [SAME_VEHICLE] MERGED
+    low traffic.mp4    frag 103 -> parent  90   [SAME_VEHICLE] MERGED
+    traffic.mp4        frag 206 -> parent 138   [SAME_VEHICLE] MERGED
+  Canonical mapping:
+    66/76/85 -> 66   |   90/103 -> 90   |   138/206 -> 138
+
+  Counts (raw | stable):
+    low traffic.mp4      total  47  cons  36  car 45/45  moto 0/0  bus 0/0  truck 2/2  bike 0/0
+    no traffic video.mp4 total   6  cons   5  car 3/3  moto 0/0  bus 1/1  truck 0/0  bike 2/2
+    traffic.mp4          total  84  cons  74  car 35/34  moto 36/36  bus 5/4  truck 8/10  bike 0/0
+
+  Delta vs Level 6B:
+    low traffic.mp4      total 50 -> 47 (-3)  cons 39 -> 36
+      car        raw 47->45 (-2)  stable 47->45 (-2)
+      truck      raw 3->2 (-1)  stable 3->2 (-1)
+    no traffic video.mp4 total 6 -> 6 (+0)  cons 5 -> 5
+    traffic.mp4          total 85 -> 84 (-1)  cons 75 -> 74
+      bus        raw 6->5 (-1)  stable 5->4 (-1)
+
+  OVERALL total: 141 -> 137 (-4)  => DECREASED
+
+  Validation: ALL CHECKS PASSED
+    [PASS] exactly 4 Level 7A merges applied  4
+    [PASS] all 4 merges applied exactly once  {(206, 138): 1, (76, 66): 1, (103, 90): 1, (85, 66): 1}
+    [PASS] 76/85/103/206 absent as logical tracks  set()
+    [PASS] canonical 66 present
+    [PASS] canonical 90 present
+    [PASS] canonical 138 present
+    [PASS] 66/76/85 form ONE identity
+    [PASS] 90/103 form ONE identity
+    [PASS] 138/206 form ONE identity
+    [PASS] trajectory row count preserved  15491 -> 15491
+    [PASS] counts internally consistent  141 -> 137
+    [PASS] all unaffected identities unchanged  set()
+    [PASS] unaffected videos unchanged  6 -> 6
+    [PASS] no original Level 6B file overwritten  level6b/ hashes unchanged
+
+  Outputs written:
+    C:\Users\haris\Traffic_project_ML\data\processed\level7b\level7b_count_comparison.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7b\level7b_count_summary.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7b\level7b_merge_manifest.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7b\level7b_track_summary.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7b\level7b_trajectories.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7b\level7b_validation.csv

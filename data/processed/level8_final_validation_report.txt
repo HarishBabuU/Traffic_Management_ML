@@ -1,0 +1,45 @@
+==========================================================================
+  LEVEL 8A - FINAL DATASET VALIDATION  (Level 7D)
+==========================================================================
+  RESULT: PASSED
+
+  Independent checks (from raw Level 7D CSVs, not reports):
+    - final track identities = 122 (expected)
+    - per-video low traffic.mp4: 44 (expected 44) [ok]
+    - per-video no traffic video.mp4: 5 (expected 5) [ok]
+    - per-video traffic.mp4: 73 (expected 73) [ok]
+    - conservative low traffic.mp4: 35 (expected 35) [ok]
+    - conservative no traffic video.mp4: 5 (expected 5) [ok]
+    - conservative traffic.mp4: 68 (expected 68) [ok]
+    - total trajectory rows = 15491 (expected)
+    - all trajectory (video, track_id) resolve to track summary
+    - no summary tracks are orphaned (all have trajectory rows)
+    - no duplicate track IDs within any video
+    - 108 duplicate (video,frame,track_id) trajectory rows [expected merge-union artifact; tracks: low traffic.m#66 x57, traffic.mp4#138 x37, low traffic.m#15 x5, low traffic.m#90 x5, traffic.mp4#131 x2, no traffic vi#114 x1, traffic.mp4#126 x1]
+    - NaN/inf/non-numeric values: none
+    - negative frame numbers: none
+    - invalid bboxes (non-positive w/h, negative, x2<x1): none
+    - missing class labels: none
+    - empty video names: none
+    - track summary numeric fields: all valid
+    - level7d_validation.csv: 9 PASS / 0 FAIL of 9 checks
+
+  Dataset structure notes:
+    - Duplicate (video,frame,track_id) trajectory rows are the
+      documented merge-union artifact (rows of a merged fragment
+      are retained at shared frames with the parent). Reported
+      above; NOT removed and NOT silently fixed.
+    - Gaps in track-id numbering are expected: merged source IDs
+      (e.g. 18, 157) are intentionally absent.
+    - Vehicles removed earlier in the whole pipeline (Level 6B-7D)
+      are not part of this dataset by design.
+
+  FPS source: raw video container metadata (read-only).
+    low traffic.mp4: 1920x1080 @ 23.98 fps, 741 frames
+    no traffic video.mp4: 1920x1080 @ 59.94 fps, 1180 frames
+    traffic.mp4: 1280x720 @ 50.00 fps, 600 frames
+
+  Cross-checks that must agree:
+    count_summary total  : 122 (3-row sum)
+    track_summary total  : 122
+    comparison ALL-VIDEO : [{'row': '19', 'video': '__ALL_VIDEOS__', 'class': '__TOTAL__', 'original_raw': '124', 'corrected_raw': '122', 'raw_delta': '-2', 'original_stable': '124', 'corrected_stable': '122', 'stable_delta': '-2'}]

@@ -1,0 +1,217 @@
+{
+  "generated_from": [
+    "data/processed/level8_traffic_statistics.csv",
+    "data/processed/level8_class_by_video.csv",
+    "data/processed/level8_traffic_over_time.csv"
+  ],
+  "note": "Explicit prepared copy for the browser dashboard. Original values preserved verbatim.",
+  "source_phase": "protected processed output (read-only)",
+  "traffic_statistics": [
+    {
+      "metric": "total_corrected_identities",
+      "value": "122",
+      "note": "unique identities (track summary rows)"
+    },
+    {
+      "metric": "total_conservative_identities",
+      "value": "108",
+      "note": ">= 3 frames & conf >= 0.3"
+    },
+    {
+      "metric": "total_trajectory_rows",
+      "value": "15491",
+      "note": "rows in level7d_trajectories.csv (includes merge-union duplicate-frame rows)"
+    },
+    {
+      "metric": "number_of_videos",
+      "value": "3",
+      "note": "['low traffic.mp4', 'no traffic video.mp4', 'traffic.mp4']"
+    },
+    {
+      "metric": "classes_present",
+      "value": "5",
+      "note": "car,motorcycle,bus,truck,bicycle"
+    },
+    {
+      "metric": "class_car_stable_count",
+      "value": "78",
+      "note": "63.93 % of all corrected identities"
+    },
+    {
+      "metric": "class_motorcycle_stable_count",
+      "value": "34",
+      "note": "27.87 % of all corrected identities"
+    },
+    {
+      "metric": "class_bus_stable_count",
+      "value": "5",
+      "note": "4.10 % of all corrected identities"
+    },
+    {
+      "metric": "class_truck_stable_count",
+      "value": "4",
+      "note": "3.28 % of all corrected identities"
+    },
+    {
+      "metric": "class_bicycle_stable_count",
+      "value": "1",
+      "note": "0.82 % of all corrected identities"
+    },
+    {
+      "metric": "duration_seconds_pooled_matrix_uses",
+      "value": "see below",
+      "note": "duration stats and time bins calculated per-video from raw container FPS"
+    }
+  ],
+  "class_by_video": [
+    {
+      "video": "low traffic.mp4",
+      "car": "43",
+      "motorcycle": "0",
+      "bus": "0",
+      "truck": "1",
+      "bicycle": "0",
+      "total": "44"
+    },
+    {
+      "video": "no traffic video.mp4",
+      "car": "3",
+      "motorcycle": "0",
+      "bus": "1",
+      "truck": "0",
+      "bicycle": "1",
+      "total": "5"
+    },
+    {
+      "video": "traffic.mp4",
+      "car": "32",
+      "motorcycle": "34",
+      "bus": "4",
+      "truck": "3",
+      "bicycle": "0",
+      "total": "73"
+    }
+  ],
+  "traffic_over_time": [
+    {
+      "video": "low traffic.mp4",
+      "interval_seconds": "0.0-5.0",
+      "start_frame": "0",
+      "end_frame": "119",
+      "unique_active_identities": "10",
+      "trajectory_observations": "332"
+    },
+    {
+      "video": "low traffic.mp4",
+      "interval_seconds": "5.0-10.0",
+      "start_frame": "120",
+      "end_frame": "239",
+      "unique_active_identities": "6",
+      "trajectory_observations": "199"
+    },
+    {
+      "video": "low traffic.mp4",
+      "interval_seconds": "10.0-15.0",
+      "start_frame": "240",
+      "end_frame": "359",
+      "unique_active_identities": "9",
+      "trajectory_observations": "226"
+    },
+    {
+      "video": "low traffic.mp4",
+      "interval_seconds": "15.0-20.0",
+      "start_frame": "360",
+      "end_frame": "479",
+      "unique_active_identities": "11",
+      "trajectory_observations": "311"
+    },
+    {
+      "video": "low traffic.mp4",
+      "interval_seconds": "20.0-25.0",
+      "start_frame": "480",
+      "end_frame": "598",
+      "unique_active_identities": "8",
+      "trajectory_observations": "334"
+    },
+    {
+      "video": "low traffic.mp4",
+      "interval_seconds": "25.0-30.0",
+      "start_frame": "599",
+      "end_frame": "718",
+      "unique_active_identities": "10",
+      "trajectory_observations": "284"
+    },
+    {
+      "video": "low traffic.mp4",
+      "interval_seconds": "30.0-30.9",
+      "start_frame": "719",
+      "end_frame": "740",
+      "unique_active_identities": "2",
+      "trajectory_observations": "37"
+    },
+    {
+      "video": "no traffic video.mp4",
+      "interval_seconds": "0.0-5.0",
+      "start_frame": "0",
+      "end_frame": "299",
+      "unique_active_identities": "1",
+      "trajectory_observations": "299"
+    },
+    {
+      "video": "no traffic video.mp4",
+      "interval_seconds": "5.0-10.0",
+      "start_frame": "300",
+      "end_frame": "598",
+      "unique_active_identities": "2",
+      "trajectory_observations": "424"
+    },
+    {
+      "video": "no traffic video.mp4",
+      "interval_seconds": "10.0-15.0",
+      "start_frame": "599",
+      "end_frame": "898",
+      "unique_active_identities": "4",
+      "trajectory_observations": "380"
+    },
+    {
+      "video": "no traffic video.mp4",
+      "interval_seconds": "15.0-19.7",
+      "start_frame": "899",
+      "end_frame": "1179",
+      "unique_active_identities": "2",
+      "trajectory_observations": "327"
+    },
+    {
+      "video": "traffic.mp4",
+      "interval_seconds": "0.0-3.0",
+      "start_frame": "0",
+      "end_frame": "149",
+      "unique_active_identities": "35",
+      "trajectory_observations": "3186"
+    },
+    {
+      "video": "traffic.mp4",
+      "interval_seconds": "3.0-6.0",
+      "start_frame": "150",
+      "end_frame": "299",
+      "unique_active_identities": "31",
+      "trajectory_observations": "3179"
+    },
+    {
+      "video": "traffic.mp4",
+      "interval_seconds": "6.0-9.0",
+      "start_frame": "300",
+      "end_frame": "449",
+      "unique_active_identities": "34",
+      "trajectory_observations": "2930"
+    },
+    {
+      "video": "traffic.mp4",
+      "interval_seconds": "9.0-12.0",
+      "start_frame": "450",
+      "end_frame": "599",
+      "unique_active_identities": "40",
+      "trajectory_observations": "3043"
+    }
+  ]
+}

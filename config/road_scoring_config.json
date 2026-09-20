@@ -1,0 +1,147 @@
+{
+  "_comment": "Phase 9D - Overall Road Scoring Engine configuration. Weights, sub-score mappings, suitability thresholds, and confidence rules. No secrets are stored. All integration records below are DETERMINISTIC MOCK/TEST records with explicit fictional road IDs; NO real road/weather/video mapping is claimed.",
+  "weights": {
+    "traffic": 40.0,
+    "weather": 25.0,
+    "road": 35.0,
+    "_comment": "Prototype weights (sum = 100). Traffic activity 40%, Weather impact 25%, Road condition 35%. These are documented prototype choices, not calibrated traffic-engineering values."
+  },
+  "score_mappings": {
+    "traffic": {
+      "LOW": 100.0,
+      "MODERATE": 70.0,
+      "HEAVY": 40.0,
+      "CONGESTED": 15.0,
+      "UNKNOWN": null
+    },
+    "weather": {
+      "LOW": 100.0,
+      "MODERATE": 70.0,
+      "HIGH": 35.0,
+      "UNKNOWN": null
+    },
+    "road": {
+      "LOW": 100.0,
+      "MODERATE": 65.0,
+      "HIGH": 25.0,
+      "UNKNOWN": null
+    }
+  },
+  "suitability_thresholds": [
+    {"min": 80, "max": 100, "label": "GOOD"},
+    {"min": 60, "max": 79, "label": "MODERATE"},
+    {"min": 40, "max": 59, "label": "CAUTION"},
+    {"min": 20, "max": 39, "label": "POOR"},
+    {"min": 0, "max": 19, "label": "VERY_POOR"}
+  ],
+  "confidence": {
+    "mode_factors": {"live": 1.0, "manual": 0.85, "mock": 0.55, "unknown": 0.25},
+    "unknown_layer_penalty": 0.8,
+    "floor": 0.05,
+    "_comment": "confidence = (known_layers/3) * (0.8 ^ unknown_layers) * min(mode_factor over the three per-layer data modes), clipped to [0.05, 1.0]. Live/manual/real inputs give higher confidence; mock gives lower; each UNKNOWN layer reduces it."
+  },
+  "data_mode_rules": {
+    "_comment": "A record whose data_mode is mock MUST keep is_mock=True and must never be presented as live. Unknown is never converted to a good score.",
+    "allowed_modes": ["live", "manual", "mock", "unknown"],
+    "requires_road_id": true,
+    "requires_observation_time": true
+  },
+  "integration_records": [
+    {
+      "_comment": "DETERMINISTIC MOCK/TEST integration record. Fictional road. No real mapping to any video, weather location, or real road.",
+      "road_id": "MOCK-ROAD-01",
+      "road_name": "Fictional Integration Road 01 (MOCK/TEST)",
+      "observation_time": "2026-01-01T08:00:00+00:00",
+      "traffic_activity": "LOW",
+      "weather_impact": "LOW",
+      "road_condition": "GOOD",
+      "road_risk": "LOW",
+      "data_mode": "mock",
+      "data_source": "phase9d-deterministic-mock"
+    },
+    {
+      "_comment": "DETERMINISTIC MOCK/TEST integration record.",
+      "road_id": "MOCK-ROAD-02",
+      "road_name": "Fictional Integration Road 02 (MOCK/TEST)",
+      "observation_time": "2026-01-01T08:00:00+00:00",
+      "traffic_activity": "MODERATE",
+      "weather_impact": "LOW",
+      "road_condition": "MODERATE",
+      "road_risk": "MODERATE",
+      "data_mode": "mock",
+      "data_source": "phase9d-deterministic-mock"
+    },
+    {
+      "_comment": "DETERMINISTIC MOCK/TEST integration record.",
+      "road_id": "MOCK-ROAD-03",
+      "road_name": "Fictional Integration Road 03 (MOCK/TEST)",
+      "observation_time": "2026-01-01T08:00:00+00:00",
+      "traffic_activity": "HEAVY",
+      "weather_impact": "MODERATE",
+      "road_condition": "POOR",
+      "road_risk": "HIGH",
+      "data_mode": "mock",
+      "data_source": "phase9d-deterministic-mock"
+    },
+    {
+      "_comment": "DETERMINISTIC MOCK/TEST integration record.",
+      "road_id": "MOCK-ROAD-04",
+      "road_name": "Fictional Integration Road 04 (MOCK/TEST)",
+      "observation_time": "2026-01-01T08:00:00+00:00",
+      "traffic_activity": "CONGESTED",
+      "weather_impact": "HIGH",
+      "road_condition": "RESTRICTED",
+      "road_risk": "HIGH",
+      "data_mode": "mock",
+      "data_source": "phase9d-deterministic-mock"
+    },
+    {
+      "_comment": "DETERMINISTIC MOCK/TEST integration record. One UNKNOWN layer (weather).",
+      "road_id": "MOCK-ROAD-05",
+      "road_name": "Fictional Integration Road 05 (MOCK/TEST)",
+      "observation_time": "2026-01-01T08:00:00+00:00",
+      "traffic_activity": "MODERATE",
+      "weather_impact": "UNKNOWN",
+      "road_condition": "GOOD",
+      "road_risk": "LOW",
+      "data_mode": "mock",
+      "data_source": "phase9d-deterministic-mock"
+    },
+    {
+      "_comment": "DETERMINISTIC MOCK/TEST integration record. Two UNKNOWN layers (weather + traffic).",
+      "road_id": "MOCK-ROAD-06",
+      "road_name": "Fictional Integration Road 06 (MOCK/TEST)",
+      "observation_time": "2026-01-01T08:00:00+00:00",
+      "traffic_activity": "UNKNOWN",
+      "weather_impact": "UNKNOWN",
+      "road_condition": "MODERATE",
+      "road_risk": "LOW",
+      "data_mode": "mock",
+      "data_source": "phase9d-deterministic-mock"
+    },
+    {
+      "_comment": "DETERMINISTIC MOCK/TEST integration record. All layers UNKNOWN.",
+      "road_id": "MOCK-ROAD-07",
+      "road_name": "Fictional Integration Road 07 (MOCK/TEST)",
+      "observation_time": "2026-01-01T08:00:00+00:00",
+      "traffic_activity": "UNKNOWN",
+      "weather_impact": "UNKNOWN",
+      "road_condition": "UNKNOWN",
+      "road_risk": "UNKNOWN",
+      "data_mode": "mock",
+      "data_source": "phase9d-deterministic-mock"
+    },
+    {
+      "_comment": "DETERMINISTIC MOCK/TEST integration record. Mixed: traffic MODERATE, weather LOW, road risk MODERATE.",
+      "road_id": "MOCK-ROAD-08",
+      "road_name": "Fictional Integration Road 08 (MOCK/TEST)",
+      "observation_time": "2026-01-01T08:00:00+00:00",
+      "traffic_activity": "MODERATE",
+      "weather_impact": "LOW",
+      "road_condition": "MODERATE",
+      "road_risk": "MODERATE",
+      "data_mode": "mock",
+      "data_source": "phase9d-deterministic-mock"
+    }
+  ]
+}

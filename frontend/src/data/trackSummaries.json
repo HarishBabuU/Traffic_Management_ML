@@ -1,0 +1,1245 @@
+{
+  "generated_from": "data/processed/level8_track_duration_statistics.csv",
+  "note": "Final corrected track identities (Level 8A). Values preserved verbatim from the protected processed output.",
+  "source_phase": "protected processed output (read-only)",
+  "finalTrackIdentities": 122,
+  "per_video": {
+    "low traffic.mp4": {
+      "tracks": 44
+    },
+    "no traffic video.mp4": {
+      "tracks": 5
+    },
+    "traffic.mp4": {
+      "tracks": 73
+    }
+  },
+  "track_count_by_video": {
+    "low traffic.mp4": [
+      {
+        "video": "low traffic.mp4",
+        "track_id": "1",
+        "vehicle_class_stable": "car",
+        "first_frame": "0",
+        "last_frame": "22",
+        "tracked_rows": "23",
+        "duration_frames": "23",
+        "duration_seconds": "0.959"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "2",
+        "vehicle_class_stable": "car",
+        "first_frame": "0",
+        "last_frame": "29",
+        "tracked_rows": "30",
+        "duration_frames": "30",
+        "duration_seconds": "1.251"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "3",
+        "vehicle_class_stable": "car",
+        "first_frame": "0",
+        "last_frame": "70",
+        "tracked_rows": "71",
+        "duration_frames": "71",
+        "duration_seconds": "2.961"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "4",
+        "vehicle_class_stable": "car",
+        "first_frame": "0",
+        "last_frame": "51",
+        "tracked_rows": "49",
+        "duration_frames": "52",
+        "duration_seconds": "2.169"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "5",
+        "vehicle_class_stable": "car",
+        "first_frame": "2",
+        "last_frame": "40",
+        "tracked_rows": "21",
+        "duration_frames": "39",
+        "duration_seconds": "1.627"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "11",
+        "vehicle_class_stable": "car",
+        "first_frame": "32",
+        "last_frame": "36",
+        "tracked_rows": "5",
+        "duration_frames": "5",
+        "duration_seconds": "0.209"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "13",
+        "vehicle_class_stable": "car",
+        "first_frame": "36",
+        "last_frame": "68",
+        "tracked_rows": "33",
+        "duration_frames": "33",
+        "duration_seconds": "1.376"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "15",
+        "vehicle_class_stable": "car",
+        "first_frame": "37",
+        "last_frame": "98",
+        "tracked_rows": "67",
+        "duration_frames": "62",
+        "duration_seconds": "2.586"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "19",
+        "vehicle_class_stable": "car",
+        "first_frame": "65",
+        "last_frame": "101",
+        "tracked_rows": "8",
+        "duration_frames": "37",
+        "duration_seconds": "1.543"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "25",
+        "vehicle_class_stable": "car",
+        "first_frame": "95",
+        "last_frame": "175",
+        "tracked_rows": "81",
+        "duration_frames": "81",
+        "duration_seconds": "3.378"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "27",
+        "vehicle_class_stable": "car",
+        "first_frame": "138",
+        "last_frame": "168",
+        "tracked_rows": "31",
+        "duration_frames": "31",
+        "duration_seconds": "1.293"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "28",
+        "vehicle_class_stable": "car",
+        "first_frame": "168",
+        "last_frame": "296",
+        "tracked_rows": "129",
+        "duration_frames": "129",
+        "duration_seconds": "5.38"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "31",
+        "vehicle_class_stable": "car",
+        "first_frame": "185",
+        "last_frame": "193",
+        "tracked_rows": "9",
+        "duration_frames": "9",
+        "duration_seconds": "0.375"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "32",
+        "vehicle_class_stable": "car",
+        "first_frame": "184",
+        "last_frame": "216",
+        "tracked_rows": "28",
+        "duration_frames": "33",
+        "duration_seconds": "1.376"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "34",
+        "vehicle_class_stable": "car",
+        "first_frame": "237",
+        "last_frame": "242",
+        "tracked_rows": "6",
+        "duration_frames": "6",
+        "duration_seconds": "0.25"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "35",
+        "vehicle_class_stable": "car",
+        "first_frame": "266",
+        "last_frame": "366",
+        "tracked_rows": "101",
+        "duration_frames": "101",
+        "duration_seconds": "4.213"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "36",
+        "vehicle_class_stable": "car",
+        "first_frame": "292",
+        "last_frame": "292",
+        "tracked_rows": "1",
+        "duration_frames": "1",
+        "duration_seconds": "0.042"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "41",
+        "vehicle_class_stable": "car",
+        "first_frame": "308",
+        "last_frame": "340",
+        "tracked_rows": "33",
+        "duration_frames": "33",
+        "duration_seconds": "1.376"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "42",
+        "vehicle_class_stable": "car",
+        "first_frame": "309",
+        "last_frame": "334",
+        "tracked_rows": "26",
+        "duration_frames": "26",
+        "duration_seconds": "1.084"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "43",
+        "vehicle_class_stable": "car",
+        "first_frame": "327",
+        "last_frame": "327",
+        "tracked_rows": "1",
+        "duration_frames": "1",
+        "duration_seconds": "0.042"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "44",
+        "vehicle_class_stable": "car",
+        "first_frame": "336",
+        "last_frame": "336",
+        "tracked_rows": "1",
+        "duration_frames": "1",
+        "duration_seconds": "0.042"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "46",
+        "vehicle_class_stable": "car",
+        "first_frame": "348",
+        "last_frame": "501",
+        "tracked_rows": "145",
+        "duration_frames": "154",
+        "duration_seconds": "6.423"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "47",
+        "vehicle_class_stable": "car",
+        "first_frame": "368",
+        "last_frame": "369",
+        "tracked_rows": "2",
+        "duration_frames": "2",
+        "duration_seconds": "0.083"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "49",
+        "vehicle_class_stable": "car",
+        "first_frame": "383",
+        "last_frame": "452",
+        "tracked_rows": "70",
+        "duration_frames": "70",
+        "duration_seconds": "2.92"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "51",
+        "vehicle_class_stable": "car",
+        "first_frame": "406",
+        "last_frame": "430",
+        "tracked_rows": "24",
+        "duration_frames": "25",
+        "duration_seconds": "1.043"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "54",
+        "vehicle_class_stable": "car",
+        "first_frame": "412",
+        "last_frame": "414",
+        "tracked_rows": "3",
+        "duration_frames": "3",
+        "duration_seconds": "0.125"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "55",
+        "vehicle_class_stable": "car",
+        "first_frame": "415",
+        "last_frame": "462",
+        "tracked_rows": "48",
+        "duration_frames": "48",
+        "duration_seconds": "2.002"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "56",
+        "vehicle_class_stable": "car",
+        "first_frame": "434",
+        "last_frame": "451",
+        "tracked_rows": "18",
+        "duration_frames": "18",
+        "duration_seconds": "0.751"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "59",
+        "vehicle_class_stable": "car",
+        "first_frame": "460",
+        "last_frame": "512",
+        "tracked_rows": "53",
+        "duration_frames": "53",
+        "duration_seconds": "2.211"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "60",
+        "vehicle_class_stable": "car",
+        "first_frame": "475",
+        "last_frame": "522",
+        "tracked_rows": "48",
+        "duration_frames": "48",
+        "duration_seconds": "2.002"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "63",
+        "vehicle_class_stable": "car",
+        "first_frame": "479",
+        "last_frame": "479",
+        "tracked_rows": "1",
+        "duration_frames": "1",
+        "duration_seconds": "0.042"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "65",
+        "vehicle_class_stable": "car",
+        "first_frame": "501",
+        "last_frame": "599",
+        "tracked_rows": "99",
+        "duration_frames": "99",
+        "duration_seconds": "4.129"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "66",
+        "vehicle_class_stable": "car",
+        "first_frame": "503",
+        "last_frame": "657",
+        "tracked_rows": "188",
+        "duration_frames": "155",
+        "duration_seconds": "6.465"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "70",
+        "vehicle_class_stable": "car",
+        "first_frame": "530",
+        "last_frame": "531",
+        "tracked_rows": "2",
+        "duration_frames": "2",
+        "duration_seconds": "0.083"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "72",
+        "vehicle_class_stable": "car",
+        "first_frame": "536",
+        "last_frame": "572",
+        "tracked_rows": "37",
+        "duration_frames": "37",
+        "duration_seconds": "1.543"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "79",
+        "vehicle_class_stable": "car",
+        "first_frame": "592",
+        "last_frame": "660",
+        "tracked_rows": "56",
+        "duration_frames": "69",
+        "duration_seconds": "2.878"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "81",
+        "vehicle_class_stable": "car",
+        "first_frame": "601",
+        "last_frame": "601",
+        "tracked_rows": "1",
+        "duration_frames": "1",
+        "duration_seconds": "0.042"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "86",
+        "vehicle_class_stable": "car",
+        "first_frame": "629",
+        "last_frame": "631",
+        "tracked_rows": "3",
+        "duration_frames": "3",
+        "duration_seconds": "0.125"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "89",
+        "vehicle_class_stable": "car",
+        "first_frame": "646",
+        "last_frame": "706",
+        "tracked_rows": "61",
+        "duration_frames": "61",
+        "duration_seconds": "2.544"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "90",
+        "vehicle_class_stable": "truck",
+        "first_frame": "652",
+        "last_frame": "740",
+        "tracked_rows": "88",
+        "duration_frames": "89",
+        "duration_seconds": "3.712"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "91",
+        "vehicle_class_stable": "car",
+        "first_frame": "655",
+        "last_frame": "660",
+        "tracked_rows": "3",
+        "duration_frames": "6",
+        "duration_seconds": "0.25"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "98",
+        "vehicle_class_stable": "car",
+        "first_frame": "689",
+        "last_frame": "690",
+        "tracked_rows": "2",
+        "duration_frames": "2",
+        "duration_seconds": "0.083"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "102",
+        "vehicle_class_stable": "car",
+        "first_frame": "704",
+        "last_frame": "704",
+        "tracked_rows": "1",
+        "duration_frames": "1",
+        "duration_seconds": "0.042"
+      },
+      {
+        "video": "low traffic.mp4",
+        "track_id": "107",
+        "vehicle_class_stable": "car",
+        "first_frame": "725",
+        "last_frame": "740",
+        "tracked_rows": "16",
+        "duration_frames": "16",
+        "duration_seconds": "0.667"
+      }
+    ],
+    "no traffic video.mp4": [
+      {
+        "video": "no traffic video.mp4",
+        "track_id": "111",
+        "vehicle_class_stable": "bus",
+        "first_frame": "1",
+        "last_frame": "980",
+        "tracked_rows": "932",
+        "duration_frames": "980",
+        "duration_seconds": "16.35"
+      },
+      {
+        "video": "no traffic video.mp4",
+        "track_id": "114",
+        "vehicle_class_stable": "bicycle",
+        "first_frame": "416",
+        "last_frame": "658",
+        "tracked_rows": "220",
+        "duration_frames": "243",
+        "duration_seconds": "4.054"
+      },
+      {
+        "video": "no traffic video.mp4",
+        "track_id": "117",
+        "vehicle_class_stable": "car",
+        "first_frame": "603",
+        "last_frame": "637",
+        "tracked_rows": "25",
+        "duration_frames": "35",
+        "duration_seconds": "0.584"
+      },
+      {
+        "video": "no traffic video.mp4",
+        "track_id": "119",
+        "vehicle_class_stable": "car",
+        "first_frame": "619",
+        "last_frame": "629",
+        "tracked_rows": "8",
+        "duration_frames": "11",
+        "duration_seconds": "0.184"
+      },
+      {
+        "video": "no traffic video.mp4",
+        "track_id": "121",
+        "vehicle_class_stable": "car",
+        "first_frame": "934",
+        "last_frame": "1179",
+        "tracked_rows": "245",
+        "duration_frames": "246",
+        "duration_seconds": "4.104"
+      }
+    ],
+    "traffic.mp4": [
+      {
+        "video": "traffic.mp4",
+        "track_id": "123",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "540",
+        "tracked_rows": "514",
+        "duration_frames": "540",
+        "duration_seconds": "10.8"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "124",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "599",
+        "tracked_rows": "599",
+        "duration_frames": "599",
+        "duration_seconds": "11.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "125",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "599",
+        "tracked_rows": "599",
+        "duration_frames": "599",
+        "duration_seconds": "11.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "126",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "303",
+        "tracked_rows": "297",
+        "duration_frames": "303",
+        "duration_seconds": "6.06"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "127",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "329",
+        "tracked_rows": "324",
+        "duration_frames": "329",
+        "duration_seconds": "6.58"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "128",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "525",
+        "tracked_rows": "525",
+        "duration_frames": "525",
+        "duration_seconds": "10.5"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "129",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "450",
+        "tracked_rows": "445",
+        "duration_frames": "450",
+        "duration_seconds": "9.0"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "130",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "599",
+        "tracked_rows": "596",
+        "duration_frames": "599",
+        "duration_seconds": "11.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "131",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "274",
+        "tracked_rows": "236",
+        "duration_frames": "274",
+        "duration_seconds": "5.48"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "132",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "51",
+        "tracked_rows": "50",
+        "duration_frames": "51",
+        "duration_seconds": "1.02"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "133",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "29",
+        "tracked_rows": "27",
+        "duration_frames": "29",
+        "duration_seconds": "0.58"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "134",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "599",
+        "tracked_rows": "593",
+        "duration_frames": "599",
+        "duration_seconds": "11.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "135",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "599",
+        "tracked_rows": "599",
+        "duration_frames": "599",
+        "duration_seconds": "11.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "136",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "599",
+        "tracked_rows": "599",
+        "duration_frames": "599",
+        "duration_seconds": "11.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "137",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "565",
+        "tracked_rows": "565",
+        "duration_frames": "565",
+        "duration_seconds": "11.3"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "138",
+        "vehicle_class_stable": "bus",
+        "first_frame": "1",
+        "last_frame": "599",
+        "tracked_rows": "601",
+        "duration_frames": "599",
+        "duration_seconds": "11.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "139",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "16",
+        "tracked_rows": "10",
+        "duration_frames": "16",
+        "duration_seconds": "0.32"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "140",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "47",
+        "tracked_rows": "47",
+        "duration_frames": "47",
+        "duration_seconds": "0.94"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "141",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "20",
+        "tracked_rows": "16",
+        "duration_frames": "20",
+        "duration_seconds": "0.4"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "142",
+        "vehicle_class_stable": "car",
+        "first_frame": "1",
+        "last_frame": "599",
+        "tracked_rows": "594",
+        "duration_frames": "599",
+        "duration_seconds": "11.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "143",
+        "vehicle_class_stable": "bus",
+        "first_frame": "1",
+        "last_frame": "599",
+        "tracked_rows": "599",
+        "duration_frames": "599",
+        "duration_seconds": "11.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "144",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "2",
+        "last_frame": "81",
+        "tracked_rows": "51",
+        "duration_frames": "80",
+        "duration_seconds": "1.6"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "145",
+        "vehicle_class_stable": "car",
+        "first_frame": "5",
+        "last_frame": "599",
+        "tracked_rows": "531",
+        "duration_frames": "595",
+        "duration_seconds": "11.9"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "146",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "11",
+        "last_frame": "55",
+        "tracked_rows": "11",
+        "duration_frames": "45",
+        "duration_seconds": "0.9"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "147",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "13",
+        "last_frame": "15",
+        "tracked_rows": "3",
+        "duration_frames": "3",
+        "duration_seconds": "0.06"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "148",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "15",
+        "last_frame": "204",
+        "tracked_rows": "145",
+        "duration_frames": "190",
+        "duration_seconds": "3.8"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "149",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "28",
+        "last_frame": "97",
+        "tracked_rows": "57",
+        "duration_frames": "70",
+        "duration_seconds": "1.4"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "150",
+        "vehicle_class_stable": "car",
+        "first_frame": "35",
+        "last_frame": "599",
+        "tracked_rows": "532",
+        "duration_frames": "565",
+        "duration_seconds": "11.3"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "151",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "47",
+        "last_frame": "105",
+        "tracked_rows": "34",
+        "duration_frames": "59",
+        "duration_seconds": "1.18"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "154",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "53",
+        "last_frame": "92",
+        "tracked_rows": "25",
+        "duration_frames": "40",
+        "duration_seconds": "0.8"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "156",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "80",
+        "last_frame": "93",
+        "tracked_rows": "5",
+        "duration_frames": "14",
+        "duration_seconds": "0.28"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "158",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "86",
+        "last_frame": "169",
+        "tracked_rows": "68",
+        "duration_frames": "84",
+        "duration_seconds": "1.68"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "159",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "91",
+        "last_frame": "146",
+        "tracked_rows": "33",
+        "duration_frames": "56",
+        "duration_seconds": "1.12"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "162",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "118",
+        "last_frame": "274",
+        "tracked_rows": "138",
+        "duration_frames": "157",
+        "duration_seconds": "3.14"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "164",
+        "vehicle_class_stable": "truck",
+        "first_frame": "134",
+        "last_frame": "193",
+        "tracked_rows": "34",
+        "duration_frames": "60",
+        "duration_seconds": "1.2"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "165",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "158",
+        "last_frame": "208",
+        "tracked_rows": "45",
+        "duration_frames": "51",
+        "duration_seconds": "1.02"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "168",
+        "vehicle_class_stable": "car",
+        "first_frame": "180",
+        "last_frame": "599",
+        "tracked_rows": "413",
+        "duration_frames": "420",
+        "duration_seconds": "8.4"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "169",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "184",
+        "last_frame": "238",
+        "tracked_rows": "55",
+        "duration_frames": "55",
+        "duration_seconds": "1.1"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "171",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "203",
+        "last_frame": "341",
+        "tracked_rows": "131",
+        "duration_frames": "139",
+        "duration_seconds": "2.78"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "173",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "220",
+        "last_frame": "241",
+        "tracked_rows": "19",
+        "duration_frames": "22",
+        "duration_seconds": "0.44"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "174",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "227",
+        "last_frame": "229",
+        "tracked_rows": "3",
+        "duration_frames": "3",
+        "duration_seconds": "0.06"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "177",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "243",
+        "last_frame": "424",
+        "tracked_rows": "165",
+        "duration_frames": "182",
+        "duration_seconds": "3.64"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "178",
+        "vehicle_class_stable": "car",
+        "first_frame": "271",
+        "last_frame": "286",
+        "tracked_rows": "16",
+        "duration_frames": "16",
+        "duration_seconds": "0.32"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "179",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "273",
+        "last_frame": "317",
+        "tracked_rows": "24",
+        "duration_frames": "45",
+        "duration_seconds": "0.9"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "180",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "307",
+        "last_frame": "313",
+        "tracked_rows": "7",
+        "duration_frames": "7",
+        "duration_seconds": "0.14"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "181",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "315",
+        "last_frame": "354",
+        "tracked_rows": "20",
+        "duration_frames": "40",
+        "duration_seconds": "0.8"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "182",
+        "vehicle_class_stable": "car",
+        "first_frame": "315",
+        "last_frame": "599",
+        "tracked_rows": "281",
+        "duration_frames": "285",
+        "duration_seconds": "5.7"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "184",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "322",
+        "last_frame": "366",
+        "tracked_rows": "34",
+        "duration_frames": "45",
+        "duration_seconds": "0.9"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "186",
+        "vehicle_class_stable": "truck",
+        "first_frame": "339",
+        "last_frame": "346",
+        "tracked_rows": "8",
+        "duration_frames": "8",
+        "duration_seconds": "0.16"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "189",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "351",
+        "last_frame": "545",
+        "tracked_rows": "170",
+        "duration_frames": "195",
+        "duration_seconds": "3.9"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "192",
+        "vehicle_class_stable": "car",
+        "first_frame": "395",
+        "last_frame": "454",
+        "tracked_rows": "26",
+        "duration_frames": "60",
+        "duration_seconds": "1.2"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "196",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "413",
+        "last_frame": "426",
+        "tracked_rows": "14",
+        "duration_frames": "14",
+        "duration_seconds": "0.28"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "197",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "413",
+        "last_frame": "599",
+        "tracked_rows": "165",
+        "duration_frames": "187",
+        "duration_seconds": "3.74"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "198",
+        "vehicle_class_stable": "bus",
+        "first_frame": "420",
+        "last_frame": "470",
+        "tracked_rows": "22",
+        "duration_frames": "51",
+        "duration_seconds": "1.02"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "199",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "425",
+        "last_frame": "455",
+        "tracked_rows": "11",
+        "duration_frames": "31",
+        "duration_seconds": "0.62"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "200",
+        "vehicle_class_stable": "car",
+        "first_frame": "443",
+        "last_frame": "599",
+        "tracked_rows": "157",
+        "duration_frames": "157",
+        "duration_seconds": "3.14"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "201",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "448",
+        "last_frame": "463",
+        "tracked_rows": "10",
+        "duration_frames": "16",
+        "duration_seconds": "0.32"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "203",
+        "vehicle_class_stable": "truck",
+        "first_frame": "451",
+        "last_frame": "599",
+        "tracked_rows": "80",
+        "duration_frames": "149",
+        "duration_seconds": "2.98"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "204",
+        "vehicle_class_stable": "car",
+        "first_frame": "454",
+        "last_frame": "515",
+        "tracked_rows": "41",
+        "duration_frames": "62",
+        "duration_seconds": "1.24"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "207",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "472",
+        "last_frame": "498",
+        "tracked_rows": "20",
+        "duration_frames": "27",
+        "duration_seconds": "0.54"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "208",
+        "vehicle_class_stable": "car",
+        "first_frame": "476",
+        "last_frame": "507",
+        "tracked_rows": "32",
+        "duration_frames": "32",
+        "duration_seconds": "0.64"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "210",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "484",
+        "last_frame": "485",
+        "tracked_rows": "2",
+        "duration_frames": "2",
+        "duration_seconds": "0.04"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "212",
+        "vehicle_class_stable": "car",
+        "first_frame": "502",
+        "last_frame": "528",
+        "tracked_rows": "21",
+        "duration_frames": "27",
+        "duration_seconds": "0.54"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "215",
+        "vehicle_class_stable": "car",
+        "first_frame": "515",
+        "last_frame": "599",
+        "tracked_rows": "39",
+        "duration_frames": "85",
+        "duration_seconds": "1.7"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "217",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "531",
+        "last_frame": "584",
+        "tracked_rows": "45",
+        "duration_frames": "54",
+        "duration_seconds": "1.08"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "218",
+        "vehicle_class_stable": "car",
+        "first_frame": "537",
+        "last_frame": "599",
+        "tracked_rows": "48",
+        "duration_frames": "63",
+        "duration_seconds": "1.26"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "221",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "546",
+        "last_frame": "559",
+        "tracked_rows": "14",
+        "duration_frames": "14",
+        "duration_seconds": "0.28"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "223",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "550",
+        "last_frame": "599",
+        "tracked_rows": "45",
+        "duration_frames": "50",
+        "duration_seconds": "1.0"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "227",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "569",
+        "last_frame": "599",
+        "tracked_rows": "21",
+        "duration_frames": "31",
+        "duration_seconds": "0.62"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "232",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "587",
+        "last_frame": "599",
+        "tracked_rows": "13",
+        "duration_frames": "13",
+        "duration_seconds": "0.26"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "233",
+        "vehicle_class_stable": "motorcycle",
+        "first_frame": "589",
+        "last_frame": "599",
+        "tracked_rows": "11",
+        "duration_frames": "11",
+        "duration_seconds": "0.22"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "235",
+        "vehicle_class_stable": "bus",
+        "first_frame": "593",
+        "last_frame": "599",
+        "tracked_rows": "7",
+        "duration_frames": "7",
+        "duration_seconds": "0.14"
+      },
+      {
+        "video": "traffic.mp4",
+        "track_id": "237",
+        "vehicle_class_stable": "car",
+        "first_frame": "599",
+        "last_frame": "599",
+        "tracked_rows": "1",
+        "duration_frames": "1",
+        "duration_seconds": "0.02"
+      }
+    ]
+  }
+}

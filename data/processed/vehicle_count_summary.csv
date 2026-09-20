@@ -1,0 +1,4 @@
+video,total_unique_vehicles,conservative_vehicles,cars,motorcycles,buses,trucks,stable_cars,stable_motorcycles,stable_buses,stable_trucks,conservative_cars,conservative_motorcycles,conservative_buses,conservative_trucks,new_track_gates,frames_processed
+low traffic.mp4,52,41,49,0,0,3,49,0,0,3,39,0,0,2,52,741
+no traffic video.mp4,7,6,3,0,1,0,3,0,1,0,3,0,1,0,7,1180
+traffic.mp4,89,77,35,37,8,9,34,37,8,10,32,34,8,3,89,600

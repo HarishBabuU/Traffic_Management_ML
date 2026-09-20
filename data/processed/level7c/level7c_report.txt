@@ -1,0 +1,66 @@
+==================================================================
+  Level 7C - Corrected Identities after Visual Verification
+==================================================================
+  Applied merges: 13 SAME_VEHICLE operations (from 9 approved decisions / 13 ops)   NOT merged: 1 (65<->79 DIFFERENT_VEHICLE)
+
+  Merge manifest (SAME_VEHICLE):
+    D6_45->46          low traffic.m   src  45 -> parent  46  (car->car)
+    D2_101->90         low traffic.m   src 101 -> parent  90  (truck->truck)
+    D3_118->114        no traffic vi   src 118 -> parent 114  (bicycle->bicycle)
+    D9_153->146        traffic.mp4     src 153 -> parent 146  (motorcycle->motorcycle)
+    D5_160->131        traffic.mp4     src 160 -> parent 131  (truck->car)
+    D10_163->150       traffic.mp4     src 163 -> parent 150  (car->car)
+    D4_167->126        traffic.mp4     src 167 -> parent 126  (truck->car)
+    D8_176->131        traffic.mp4     src 176 -> parent 131  (car->car)
+    D1_truckchain->138 traffic.mp4     src 224 -> parent 138  (truck->bus)
+    D1_truckchain->138 traffic.mp4     src 228 -> parent 138  (truck->bus)
+    D1_truckchain->138 traffic.mp4     src 229 -> parent 138  (truck->bus)
+    D1_truckchain->138 traffic.mp4     src 234 -> parent 138  (truck->bus)
+    D1_truckchain->138 traffic.mp4     src 236 -> parent 138  (truck->bus)
+    D7_65_vs_79        low traffic.m   src  65 <->  79  NOT MERGED (DIFFERENT_VEHICLE)
+
+  Counts (raw | stable)  [level7c]:
+    low traffic.mp4      total  45  cons  36  car 44/44  moto 0/0  bus 0/0  truck 1/1  bike 0/0
+    no traffic video.mp4 total   5  cons   5  car 3/3  moto 0/0  bus 1/1  truck 0/0  bike 1/1
+    traffic.mp4          total  74  cons  69  car 32/32  moto 35/35  bus 4/4  truck 3/3  bike 0/0
+
+  Delta vs Level 7B:
+    low traffic.mp4      total 47 -> 45 (-2)  cons 36 -> 36
+      car        raw 45->44 (-1)  stable 45->44 (-1)
+      truck      raw 2->1 (-1)  stable 2->1 (-1)
+    no traffic video.mp4 total 6 -> 5 (-1)  cons 5 -> 5
+      bicycle    raw 2->1 (-1)  stable 2->1 (-1)
+    traffic.mp4          total 84 -> 74 (-10)  cons 74 -> 69
+      car        raw 35->32 (-3)  stable 34->32 (-2)
+      motorcycle raw 36->35 (-1)  stable 36->35 (-1)
+      bus        raw 5->4 (-1)  stable 4->4 (+0)
+      truck      raw 8->3 (-5)  stable 10->3 (-7)
+
+  Trajectory rows: 15491 -> 15491 (preserved 1:1)
+  Unique identities removed: 13  (= 13 independent merge operations including the truck chain, which merges 5 source ids -> 138)
+
+  OVERALL total: 137 -> 124 (-13)  => DECREASED
+
+  Validation: ALL CHECKS PASSED
+    [PASS] input trajectory row count == output  15491 -> 15491
+    [PASS] no unexpected track IDs changed  set()
+    [PASS] all approved source IDs mapped correctly  applied={('traffic.mp4', 224): 1, ('traffic.mp4', 228): 1, ('traffic.mp4', 229): 1, ('traffic.mp4', 234): 1, ('traffic.mp4', 236): 1, ('low traffic.mp4', 101): 1, ('no traffic video.mp4', 118): 1, ('traffic.mp4', 167): 1, ('traffic.mp4', 160): 1, ('low traffic.mp4', 45): 1, ('traffic.mp4', 176): 1, ('traffic.mp4', 153): 1, ('traffic.mp4', 163): 1} leftover=set()
+    [PASS] 65 and 79 remain separate identities  65 present=True, 79 present=True
+    [PASS] all frames of 224+228+229+234+236 assigned to 138  22 rows -> 22 landed in 138
+    [PASS] all frames of 101 assigned to 90  1 rows -> 1 landed in 90
+    [PASS] all frames of 118 assigned to 114  1 rows -> 1 landed in 114
+    [PASS] all frames of 167 assigned to 126  1 rows -> 1 landed in 126
+    [PASS] all frames of 160+176 assigned to 131  15 rows -> 15 landed in 131
+    [PASS] all frames of 153 assigned to 146  4 rows -> 4 landed in 146
+    [PASS] all frames of 163 assigned to 150  461 rows -> 461 landed in 150
+    [PASS] all frames of 45 assigned to 46  1 rows -> 1 landed in 46
+    [PASS] no source Level 7B file modified  level7b/ hashes unchanged
+    [PASS] identity reduction equals independent merges applied  137 -> 124 (expected -13)
+
+  Outputs written:
+    C:\Users\haris\Traffic_project_ML\data\processed\level7c\level7c_count_comparison.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7c\level7c_count_summary.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7c\level7c_merge_manifest.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7c\level7c_track_summary.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7c\level7c_trajectories.csv
+    C:\Users\haris\Traffic_project_ML\data\processed\level7c\level7c_validation.csv

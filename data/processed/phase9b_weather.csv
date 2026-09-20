@@ -1,0 +1,2 @@
+location_id,latitude,longitude,timestamp,temperature_c,precipitation_mm,weather_code,weather_condition,wind_speed_kmh,visibility_km,humidity_pct,source,provider,is_mock,fallback_reason,weather_category,weather_traffic_impact,impact_score,impact_rule_basis
+example_location,13.0827,80.2707,2026-09-16T11:15,33.3,0.0,0,clear sky,1.3,24.6,56,live,open-meteo,False,,CLEAR,LOW,0,category 0 + rain 0 + wind 0 + visibility 0

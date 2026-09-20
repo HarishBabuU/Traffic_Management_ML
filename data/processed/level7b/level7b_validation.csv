@@ -1,0 +1,15 @@
+check,ok,detail
+exactly 4 Level 7A merges applied,PASS,4
+all 4 merges applied exactly once,PASS,"{(206, 138): 1, (76, 66): 1, (103, 90): 1, (85, 66): 1}"
+76/85/103/206 absent as logical tracks,PASS,set()
+canonical 66 present,PASS,
+canonical 90 present,PASS,
+canonical 138 present,PASS,
+66/76/85 form ONE identity,PASS,
+90/103 form ONE identity,PASS,
+138/206 form ONE identity,PASS,
+trajectory row count preserved,PASS,15491 -> 15491
+counts internally consistent,PASS,141 -> 137
+all unaffected identities unchanged,PASS,set()
+unaffected videos unchanged,PASS,6 -> 6
+no original Level 6B file overwritten,PASS,level6b/ hashes unchanged
