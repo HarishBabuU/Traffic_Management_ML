@@ -1,0 +1,28 @@
+# Deployment dependencies for the FastAPI ML backend.
+#
+# Copy of requirements-api.txt (which stays unchanged and remains the local
+# reference). Render and similar hosts look for requirements.txt at the repo
+# root.
+#
+# Only what api/main.py -> src/track_and_count.py -> src/config.py actually
+# imports at runtime:
+#   fastapi, uvicorn, python-multipart  -> the API service
+#   ultralytics, torch, torchvision    -> YOLOv8n detection
+#   opencv-python                      -> video decode + tracking
+#   lap                                -> ByteTrack association
+#   numpy                              -> tensor .numpy() conversion
+#   PyYAML                             -> bytetrack_traffic.yaml parsing
+#
+# No API keys, no secrets, no environment-specific paths.
+
+fastapi>=0.110.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+ultralytics>=8.4.106
+opencv-python>=5.0.0.93
+torch>=2.13.0
+torchvision>=0.28.0
+numpy>=2.5.1
+pandas>=2.0.0
+PyYAML>=6.0.3
+lap>=0.5.13

@@ -32,6 +32,8 @@ export default function TripPlanningSection({
   originFromLocation = false,
   onUseLocation,
   onOpenVoice,
+  geocodeCandidates = [],
+  onPickGeocodeCandidate,
   docked = false,
 }) {
   const canAnalyze = destination.trim() !== '';
@@ -39,6 +41,7 @@ export default function TripPlanningSection({
   const ready = analysisStatus === 'ready';
   const pending = analysisStatus !== 'idle' && analysisStatus !== 'ready';
   const locationLive = !!(locationCard && locationCard.coords);
+  const ambiguous = analysisStatus === 'geocode-ambiguous' && geocodeCandidates.length > 0;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -69,6 +72,19 @@ export default function TripPlanningSection({
         <div className="location-quick-badge" aria-live="polite">
           <StatusBadge status="LIVE" note="Origin: Current Location" />
         </div>
+      ) : null}
+
+      {locationLive ? (
+        <p
+          className={`location-accuracy-note${locationCard.isApproximate ? ' location-accuracy-approximate' : ''}`}
+          aria-live="polite"
+        >
+          {locationCard.note}
+        </p>
+      ) : locationCard && locationCard.note && locationCard.status !== 'STATIC' ? (
+        <p className="location-accuracy-note" aria-live="polite">
+          {locationCard.note}
+        </p>
       ) : null}
 
       {trip && docked ? (
@@ -146,6 +162,26 @@ export default function TripPlanningSection({
             </button>
           ) : null}
         </div>
+
+        {ambiguous ? (
+          <div className="geocode-candidates" role="group" aria-label="Matching locations">
+            <span className="trip-hint">Matching locations — pick one:</span>
+            {geocodeCandidates.map((candidate, index) => (
+              <button
+                key={`${candidate.name}-${candidate.lat}-${candidate.lon}-${index}`}
+                type="button"
+                className="assistant-prompt-chip geocode-candidate-chip"
+                disabled={busy}
+                data-geocode-candidate={candidate.name}
+                onClick={() => onPickGeocodeCandidate(candidate)}
+                title={candidate.region || candidate.name}
+              >
+                {candidate.name}
+                {candidate.region ? <span className="geocode-candidate-region"> — {candidate.region}</span> : null}
+              </button>
+            ))}
+          </div>
+        ) : null}
 
         {docked ? null : (
           <div className="trip-examples" aria-label="Example trips">

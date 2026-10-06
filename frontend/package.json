@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "prepare:data": "node scripts/prepare_data.mjs",
     "prepare:demo:cctv": "node scripts/prepare_demo_cctv.mjs",
-    "test": "node --test scripts/routeIntelligence_test.mjs scripts/smoke_test.mjs scripts/commandCenter_test.mjs scripts/appViews_test.mjs scripts/step4_providerRoutes_test.mjs scripts/step4_videoStream_test.mjs"
+    "test": "node --test scripts/routeIntelligence_test.mjs scripts/smoke_test.mjs scripts/commandCenter_test.mjs scripts/appViews_test.mjs scripts/step4_providerRoutes_test.mjs scripts/step4_videoStream_test.mjs scripts/step4_mlAnalysis_test.mjs scripts/geocodeRanking_test.mjs scripts/geocodeSearch_test.mjs scripts/geolocationAccuracy_test.mjs scripts/routingAlternatives_test.mjs scripts/routingAlternativesUi_test.mjs scripts/step5_demoVideoBaseUrl_test.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

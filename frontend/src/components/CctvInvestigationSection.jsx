@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import Section from './Section';
 import StatusBadge from './StatusBadge';
+import MlVideoAnalysisPanel from './MlVideoAnalysisPanel';
 import { ROUTE_CCTV_CONTRACT } from '../services/routeIntelligence';
 import { getDemoCctvEvidence } from '../services/dataService';
 import {
@@ -377,6 +378,8 @@ export default function CctvInvestigationSection({
               this route.
             </span>
           </div>
+
+          <MlVideoAnalysisPanel />
 
           <p className="section-sub" style={{ marginTop: 10 }}>
             No CCTV slot carries a coordinate and none is placed on a map. The

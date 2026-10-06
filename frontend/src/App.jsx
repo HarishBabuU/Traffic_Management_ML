@@ -30,7 +30,11 @@ import {
 } from './services/weatherProvider';
 import { createAssistantService } from './services/aiAssistant';
 import { createVoiceAssistantService } from './services/voiceAssistant';
-import { createLocationProvider, locationCard } from './services/geolocation';
+import {
+  createLocationProvider,
+  locationCard,
+  isApproximateFix,
+} from './services/geolocation';
 import { createTripService } from './services/tripService';
 import { scenarioUiState } from './services/scenarioSimulator';
 import {
@@ -71,11 +75,28 @@ export default function App() {
   const [selectedRouteId, setSelectedRouteId] = useState(null);
   const [selectedResourceId, setSelectedResourceId] = useState(null);
   const [selectedRealRouteId, setSelectedRealRouteId] = useState(null);
+  const [routePanelOpen, setRoutePanelOpen] = useState(true);
   const [analysis, setAnalysis] = useState({ status: 'idle' });
+  // Ranked geocoder candidates offered to the user when the search could not be
+  // resolved with confidence. Never resolved silently on the user's behalf.
+  const [geocodeCandidates, setGeocodeCandidates] = useState([]);
   const [weather, setWeather] = useState({ status: 'idle', kind: null, data: null });
   const [scenarioRequest, setScenarioRequest] = useState(null);
   const [assistantOpen, setAssistantOpen] = useState(false);
   const [evidenceTab, setEvidenceTab] = useState('ml');
+
+  const locationCardModel = locationCard(location);
+  const locationAccuracy = locationCardModel.accuracyMeters;
+  const locationIsApproximate =
+    location.status === 'live' ? isApproximateFix(locationAccuracy) : false;
+  const currentLocationPoint =
+    location.status === 'live' && location.coords
+      ? {
+          lat: location.coords.lat,
+          lon: location.coords.lon,
+          accuracy: locationAccuracy,
+        }
+      : null;
 
   const EVIDENCE_TABS = [
     { id: 'ml', label: 'ML RESULTS' },
@@ -107,6 +128,7 @@ export default function App() {
     setSelectedRouteId(null);
     setSelectedResourceId(null);
     setSelectedRealRouteId(null);
+    setRoutePanelOpen(true);
   };
 
   const scrollToSection = (id) => {
@@ -159,6 +181,7 @@ export default function App() {
     setDestination(value);
     setTrip(null);
     setAnalysis({ status: 'idle' });
+    setGeocodeCandidates([]);
     setWeather({ status: 'idle', kind: null, data: null });
     resetSelection();
   };
@@ -175,6 +198,7 @@ export default function App() {
     setTrip({ origin: originValue.trim(), destination: destinationValue.trim() });
     resetSelection();
     setAnalysis({ status: 'geocoding' });
+    setGeocodeCandidates([]);
     setWeather({ status: 'idle', kind: null, data: null });
     try {
       const result = await tripService.analyzeRealRoutes({
@@ -185,7 +209,33 @@ export default function App() {
       setAnalysis({ status: 'ready', ...result });
       await loadWeatherFor(result.destinationResolved);
     } catch (error) {
-      setAnalysis({ status: errorKindFor(error) });
+      const kind = errorKindFor(error);
+      // Ambiguous search: show the ranked candidates instead of picking one.
+      setGeocodeCandidates(kind === 'geocode-ambiguous' && Array.isArray(error.candidates) ? error.candidates : []);
+      setAnalysis({ status: kind });
+    }
+  };
+
+  /**
+   * The user picked one of the offered geocoder candidates: refine the query
+   * with that candidate's real locality and re-run the search. No coordinates
+   * are injected by hand — the refined text is resolved through Photon again.
+   */
+  const handlePickGeocodeCandidate = (candidate) => {
+    if (!candidate) return;
+    const field = analysis.status === 'geocode-ambiguous' ? 'destination' : 'origin';
+    const refined = [candidate.name, candidate.city, candidate.district, candidate.state]
+      .filter(Boolean)
+      .filter((part, index, parts) => parts.indexOf(part) === index)
+      .join(', ');
+    setGeocodeCandidates([]);
+    if (field === 'origin') {
+      setOrigin(refined);
+      setOriginFromLocation(false);
+      handleAnalyze(refined, destination);
+    } else {
+      setDestination(refined);
+      handleAnalyze(origin, refined);
     }
   };
 
@@ -216,6 +266,18 @@ export default function App() {
     setSelectedResourceId(null);
   };
 
+  // Driving a route from the results panel also collapses the panel so the map
+  // underneath is fully visible. Selection, route line, weather, traffic and
+  // route intelligence are untouched; only the panel overlay is hidden.
+  // The panel is never a dead end: the "Show routes" control in the map status
+  // chip brings it back so every route the provider returned stays selectable.
+  const handleDriveRealRoute = (routeId) => {
+    handleSelectRealRoute(routeId);
+    setRoutePanelOpen(false);
+  };
+
+  const handleToggleRoutePanel = () => setRoutePanelOpen((open) => !open);
+
   const handleSelectResource = (resourceId) => setSelectedResourceId(resourceId);
   const handleCloseResource = () => setSelectedResourceId(null);
 
@@ -238,6 +300,7 @@ export default function App() {
         setDestination(action.destination || '');
         setTrip(null);
         setAnalysis({ status: 'idle' });
+        setGeocodeCandidates([]);
         setWeather({ status: 'idle', kind: null, data: null });
         resetSelection();
         if (action.autoAnalyze && action.origin === 'My current location') {
@@ -305,6 +368,7 @@ export default function App() {
         setDestination('');
         setTrip(null);
         setAnalysis({ status: 'idle' });
+        setGeocodeCandidates([]);
         setWeather({ status: 'idle', kind: null, data: null });
         resetSelection();
         goToView('home', 'trip');
@@ -453,7 +517,7 @@ export default function App() {
   );
 
   return (
-    <div className="app">
+    <div className={`app${assistantOpen ? ' assistant-open' : ''}`}>
       <Header currentView={view} onNavigate={(next) => goToView(next, null)} />
 
       <main className="app-main">
@@ -462,11 +526,7 @@ export default function App() {
             <div className="command-stage">
               <div className="map-frame trip-map-frame command-map">
                 <MapView
-                  currentLocation={
-                    location.status === 'live' && location.coords
-                      ? { lat: location.coords.lat, lon: location.coords.lon }
-                      : null
-                  }
+                  currentLocation={currentLocationPoint}
                   origin={analysisReady ? analysis.originResolved : null}
                   destination={analysisReady ? analysis.destinationResolved : null}
                   routes={analysisReady && Array.isArray(analysis.routes) ? analysis.routes : []}
@@ -485,18 +545,20 @@ export default function App() {
                   onAnalyze={handleAnalyze}
                   trip={trip}
                   analysisStatus={analysis.status}
-                  locationCard={locationCard(location)}
+                  locationCard={locationCardModel}
                   originFromLocation={originFromLocation}
                   onUseLocation={handleUseLocationAsOrigin}
                   onOpenVoice={() => setAssistantOpen(true)}
+                  geocodeCandidates={geocodeCandidates}
+                  onPickGeocodeCandidate={handlePickGeocodeCandidate}
                 />
               </div>
 
-              <div className="routes-strip">
+              <div className="routes-strip" hidden={!routePanelOpen}>
                 <RealRouteSection
                   analysis={analysis}
                   selectedRealRouteId={selectedRealRouteId}
-                  onSelectRealRoute={handleSelectRealRoute}
+                  onSelectRealRoute={handleDriveRealRoute}
                   trip={trip}
                   weather={weather}
                   intel={tripIntel}
@@ -508,6 +570,14 @@ export default function App() {
                   <span className="geo-status">
                     <span className="geo-dot" aria-hidden="true" />
                     You are here
+                    {Number.isFinite(Number(locationAccuracy)) ? (
+                      <span className="geo-accuracy">
+                        {' '}· {locationIsApproximate ? 'approximate ' : ''}±
+                        {Math.round(Number(locationAccuracy))} m
+                      </span>
+                    ) : (
+                      <span className="geo-accuracy"> · approximate (no accuracy reported)</span>
+                    )}
                   </span>
                 ) : location.status === 'loading' ? (
                   <span className="geo-status">Locating…</span>
@@ -515,10 +585,24 @@ export default function App() {
                   <span className="geo-status">Location unavailable</span>
                 )}
                 {analysisReady && Array.isArray(analysis.routes) && analysis.routes.length > 0 ? (
-                  <span className="route-count">
+                  <button
+                    type="button"
+                    className="route-count route-count-toggle"
+                    data-route-panel-toggle={routePanelOpen ? 'open' : 'collapsed'}
+                    aria-expanded={routePanelOpen}
+                    onClick={handleToggleRoutePanel}
+                    title={
+                      routePanelOpen
+                        ? 'Hide the route list'
+                        : `Show all ${analysis.routes.length} route${analysis.routes.length === 1 ? '' : 's'} returned by OSRM`
+                    }
+                  >
                     <span className="status-dot" aria-hidden="true" /> ROUTE ANALYSIS READY ·{' '}
                     {analysis.routes.length} OSRM alternative{analysis.routes.length === 1 ? '' : 's'}
-                  </span>
+                    <span className="route-count-caret" aria-hidden="true">
+                      {routePanelOpen ? ' ▾' : ' ▸'}
+                    </span>
+                  </button>
                 ) : null}
                 {analysisReady ? (
                   <span className="layer-status" aria-hidden="true">

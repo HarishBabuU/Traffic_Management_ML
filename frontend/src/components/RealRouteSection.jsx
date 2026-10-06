@@ -19,6 +19,15 @@ import {
  * numbers; "Fastest"/"Shortest" tags come from the same numbers and never
  * invent a ranking. Demo (Phase 9E) routes are deliberately NOT shown here.
  */
+/**
+ * Shown when the routing provider answered with exactly one route. OSRM only
+ * returns alternatives that are meaningfully different, so a single result is
+ * a normal provider outcome — it is disclosed rather than hidden, and no extra
+ * route is ever invented to fill the strip.
+ */
+export const SINGLE_ROUTE_NOTE =
+  'The routing provider returned 1 route for this origin and destination — no alternative path was available from OSRM.';
+
 export default function RealRouteSection({
   analysis,
   selectedRealRouteId,
@@ -67,6 +76,9 @@ export default function RealRouteSection({
       <div className="route-strip-head">
         <span className="route-strip-title">Live routes · OSRM</span>
         <span className="route-strip-meta">
+          <span className="route-provider-count">
+            {routes.length} route{routes.length === 1 ? '' : 's'} returned by provider
+          </span>
           {intel && intel.recommendation ? (
             <span className="recommended-mini-pill">
               <span className="status-dot" aria-hidden="true" />
@@ -76,6 +88,12 @@ export default function RealRouteSection({
           <StatusBadge status="LIVE" note="Real alternatives" />
         </span>
       </div>
+
+      {routes.length === 1 ? (
+        <p className="route-single-note" role="status">
+          {SINGLE_ROUTE_NOTE}
+        </p>
+      ) : null}
 
       <div className="route-strip-scroll" aria-live="polite">
         <div className="real-route-grid">

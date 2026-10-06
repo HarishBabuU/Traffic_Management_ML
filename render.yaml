@@ -1,0 +1,62 @@
+# Render blueprint — FastAPI ML backend for
+# "Intelligent Traffic Monitoring and Prediction System Using Machine Learning and Computer Vision"
+#
+# This file is INFRASTRUCTURE CONFIGURATION ONLY. Nothing is deployed by
+# committing it. Render reads it only when you explicitly choose "New > Blueprint"
+# in the dashboard and point it at a repository.
+#
+# ── Before the first deploy ────────────────────────────────────────────────
+# 1. Set FRONTEND_ORIGIN to the real Cloudflare Pages URL (see sync:false below).
+#    api/main.py reads os.getenv("FRONTEND_ORIGIN") and adds it to the CORS
+#    allow-list. Leave it unset and the browser will be blocked by CORS.
+# 2. Standard is a PAID plan. Render will only bill once this blueprint is
+#    created and the service is actually started.
+#
+# ── No secrets live in this file ───────────────────────────────────────────
+# Every environment variable below is `sync: false`, so Render prompts for its
+# value instead of reading it from git. Never commit an API key, a token, or a
+# deployed URL here.
+
+services:
+  - type: web
+    name: traffic-ml-api
+    runtime: python
+    plan: standard
+    region: singapore
+
+    # Render defaults to 3.14.3; runtime.txt pins it explicitly so the host
+    # matches the local project venv (Python 3.14).
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+
+    healthCheckPath: /health
+
+    # Instance: Standard — 2 GB RAM / 1.0 CPU.
+    #
+    # Standard is selected because the measured peak RSS of this ML workload is
+    # approximately 515 MB (YOLOv8n + ByteTrack inference on a 6 s clip, with
+    # the model resident in memory). Render's Free plan provides only 512 MB of
+    # RAM, which is below the measured peak, so the worker would be OOM-killed
+    # mid-inference. Standard's 2 GB leaves comfortable headroom for the model,
+    # decoded frames and the upload buffer, and 1 CPU keeps a 6 s clip at a
+    # usable analysis time instead of Free's 0.1 CPU.
+    #
+    # This plan is PAID. Nothing is billed by committing this file — billing
+    # only starts when the Blueprint is created and the service runs.
+
+    envVars:
+      # Deployed frontend origin allowed by the backend's CORS policy.
+      # Set this to the Cloudflare Pages URL, e.g. https://<site>.pages.dev
+      # Unset locally; api/main.py falls back to http://localhost:5173 only.
+      - key: FRONTEND_ORIGIN
+        sync: false
+
+      # Upload ceiling in MB. The whole upload is buffered in memory by
+      # `await file.read()`, so this must stay well under the instance's RAM.
+      # api/main.py defaults to 50; set explicitly here so the deployed value
+      # is visible rather than implicit.
+      - key: MAX_UPLOAD_MB
+        value: "50"
+
+      - key: PYTHON_VERSION
+        value: "3.14.3"

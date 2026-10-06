@@ -121,6 +121,35 @@
   box-shadow: 0 0 6px rgba(22, 163, 74, 0.8);
 }
 
+/* Accuracy read-out next to "You are here" — states the browser-reported
+   radius instead of implying an exact position. */
+.map-status-chip .geo-accuracy {
+  opacity: 0.85;
+}
+
+/* The route-count chip doubles as the show/hide control for the route list, so
+   a collapsed panel can never become a dead end. */
+.map-status-chip .route-count-toggle {
+  pointer-events: auto;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 2px 4px;
+  border-radius: 999px;
+}
+
+.map-status-chip .route-count-toggle:hover,
+.map-status-chip .route-count-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.map-status-chip .route-count-caret {
+  opacity: 0.75;
+}
+
 .map-status-chip .route-count {
   color: var(--text-muted, #94a3b8);
 }
@@ -178,6 +207,31 @@
 
 .trip-panel-docked .location-quick-badge {
   margin: 0 0 2px;
+}
+
+/* Browser-reported geolocation accuracy — an honest read-out, never a claim of
+   an exact position. */
+.location-accuracy-note {
+  margin: 2px 0 4px;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  color: var(--ops-dim, #94a3b8);
+}
+
+.location-accuracy-approximate {
+  color: #fbbf24;
+}
+
+.trip-panel-card .geocode-candidates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 6px;
+}
+
+.geocode-candidate-region {
+  opacity: 0.75;
 }
 
 .trip-panel-docked .trip-form {
@@ -289,6 +343,21 @@
   justify-content: space-between;
   gap: 8px;
   margin-bottom: 8px;
+}
+
+/* How many routes the provider actually returned — the count is never assumed. */
+.route-provider-count {
+  font-size: 0.68rem;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+/* Honest disclosure when OSRM offered no alternative path. */
+.route-single-note {
+  margin: 0 0 8px;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  color: #fbbf24;
 }
 
 .route-strip-title {
@@ -755,6 +824,11 @@
   .assistant-layer.assistant-layer-open {
     width: 360px;
   }
+
+  /* Drawer narrows to 360px here, so the route strip pulls in by less. */
+  .app.assistant-open .routes-strip {
+    right: 396px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1116,6 +1190,16 @@
 
 .routes-strip {
   right: 96px;
+}
+
+/* The assistant drawer is `position: fixed`, bottom-right, `z-index: 1000` and
+   ~400px wide, so when it is open it would sit on top of the right-hand end of
+   the route strip and hide those route cards. The strip is pulled in by the
+   drawer's width instead, so every route stays visible and clickable while the
+   assistant is open. The strip already scrolls horizontally, so routes beyond
+   the fold remain reachable. */
+.app.assistant-open .routes-strip {
+  right: 436px;
 }
 
 .route-strip-meta {

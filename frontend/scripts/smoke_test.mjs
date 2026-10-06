@@ -32,6 +32,7 @@ import {
   routeUrl,
   errorKindFor,
   MAP_PROVIDERS,
+  PHOTON_CANDIDATE_LIMIT,
 } from '../src/services/locationProviders.js';
 import {
   createWeatherService,
@@ -393,7 +394,11 @@ const OSRM_ROUTES = {
 test('provider endpoints use only the documented public URLs (no invented API)', () => {
   assert.equal(
     geocodeTextUrl('Chennai Airport'),
-    'https://photon.komoot.io/api/?q=Chennai%20Airport&limit=3'
+    `https://photon.komoot.io/api/?q=Chennai%20Airport&limit=${PHOTON_CANDIDATE_LIMIT}`
+  );
+  assert.ok(
+    PHOTON_CANDIDATE_LIMIT > 1,
+    'more than one Photon candidate is requested so results can be ranked'
   );
   const url = routeUrl({ lat: 1, lon: 2 }, { lat: 3, lon: 4 });
   assert.ok(

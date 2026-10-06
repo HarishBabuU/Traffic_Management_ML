@@ -13,6 +13,7 @@ import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MAP_PROVIDERS } from '../services/locationProviders';
+import { accuracyBand, isApproximateFix, LOCATION_PRECISION } from '../services/geolocation';
 
 export const ROUTE_COLORS = ['#1d4ed8', '#0d9488', '#7c3aed', '#c2410c', '#be185d', '#2563eb'];
 
@@ -31,6 +32,42 @@ function placeMarker(map, point, { color, label }) {
   marker.bindTooltip(label, { direction: 'top' });
   marker.addTo(map);
   return marker;
+}
+
+/**
+ * Draws the browser-reported accuracy radius around the current position.
+ *
+ * `currentLocation.accuracy` is the 95 % confidence radius the Geolocation API
+ * returned; it is drawn verbatim (never re-estimated, never offset) and stays
+ * centred on the actual browser coordinates. The label always states that the
+ * point inside the circle is approximate, so a coarse network fix can never be
+ * read as an exact address.
+ */
+function accuracyCircle(map, currentLocation) {
+  const accuracy = Number(currentLocation.accuracy);
+  if (!Number.isFinite(accuracy) || accuracy <= 0) return null;
+  const radius = accuracy;
+  const circle = L.circle([currentLocation.lat, currentLocation.lon], {
+    radius,
+    color: '#2563eb',
+    weight: 1,
+    opacity: 0.6,
+    fillColor: '#2563eb',
+    fillOpacity: 0.12,
+    interactive: false,
+  });
+  const band = accuracyBand(accuracy);
+  const word =
+    band === LOCATION_PRECISION.high
+      ? 'Precise to'
+      : band === LOCATION_PRECISION.fair
+        ? 'Approximate, accurate to'
+        : band === LOCATION_PRECISION.low
+          ? 'Approximate, only accurate to'
+          : 'Approximate, very rough position, only accurate to';
+  circle.bindTooltip(`${word} ±${Math.round(radius)} m`, { direction: 'top', sticky: true });
+  circle.addTo(map);
+  return circle;
 }
 
 function routeLine(map, route, color, selected, onClick) {
@@ -103,10 +140,33 @@ export default function MapView({
 
     const bounds = [];
     if (currentLocation && Number.isFinite(currentLocation.lat) && Number.isFinite(currentLocation.lon)) {
+      // `lat`/`lon` are used exactly as the browser reported them — the accuracy
+      // circle is centred on the same unmodified point.
+      const accuracy = Number(currentLocation.accuracy);
+      const hasAccuracy = Number.isFinite(accuracy) && accuracy > 0;
+      const approximate = isApproximateFix(hasAccuracy ? accuracy : null);
+      // The radius is drawn first so the marker stays readable on top of it.
+      const circle = accuracyCircle(map, currentLocation);
+      if (circle) layersRef.current.push(circle);
       layersRef.current.push(
-        placeMarker(map, currentLocation, { color: '#2563eb', label: 'My current location' })
+        placeMarker(map, currentLocation, {
+          color: '#2563eb',
+          label: approximate
+            ? hasAccuracy
+              ? `My current location (approximate, ±${Math.round(accuracy)} m)`
+              : 'My current location (approximate — browser reported no accuracy)'
+            : `My current location (±${Math.round(accuracy)} m)`,
+        })
       );
       bounds.push([currentLocation.lat, currentLocation.lon]);
+      // Keep the whole uncertainty circle in view, otherwise a poor fix would
+      // look like a precise pin just because the map zoomed in on it.
+      if (hasAccuracy) {
+        bounds.push(
+          [currentLocation.lat - accuracy / 111320, currentLocation.lon],
+          [currentLocation.lat + accuracy / 111320, currentLocation.lon]
+        );
+      }
     }
     if (origin) {
       layersRef.current.push(placeMarker(map, origin, { color: '#16a34a', label: 'Origin' }));

@@ -63,7 +63,7 @@ export const MAP_PROVIDERS_DISCLOSURE = {
  *   geocoding     resolving origin/destination locations
  *   routing       calculating real route(s)
  *   ready         real route(s) available (analysisReady === true)
- *   location-error one of geocode-not-found / geocode-http
+ *   location-error one of geocode-not-found / geocode-ambiguous / geocode-http
  *   unavailable   one of route-empty / route-http / network
  */
 export const ANALYSIS_MESSAGES = {
@@ -73,6 +73,8 @@ export const ANALYSIS_MESSAGES = {
   ready: '',
   'geocode-not-found':
     'Location could not be resolved. Please enter a more specific location.',
+  'geocode-ambiguous':
+    'Several locations match this search. Pick the one you meant below.',
   'route-empty': 'Route could not be generated. Please try again.',
   'geocode-http': 'Real map service unavailable. No real route was generated.',
   'route-http': 'Real map service unavailable. No real route was generated.',
@@ -99,7 +101,7 @@ export function mapViewState(status) {
     return { mode: 'loading', message: ANALYSIS_MESSAGES[status] || '' };
   }
   if (status === 'ready') return { mode: 'ready', message: '' };
-  if (status === 'geocode-not-found') {
+  if (status === 'geocode-not-found' || status === 'geocode-ambiguous') {
     return { mode: 'location-error', message: ANALYSIS_MESSAGES[status] || '' };
   }
   return {
@@ -307,21 +309,61 @@ export function selectableRoute(route) {
 }
 
 /**
- * Served URL for a recorded dataset clip. The clips live in public/recordings/
- * (byte-for-byte copies of the original MP4s).
+ * Optional external base for the recorded demo clips, e.g. a Cloudflare R2
+ * public bucket. Read once from VITE_DEMO_CCTV_BASE_URL.
+ *
+ * Absent or blank → undefined → every helper below returns its previous local
+ * URL and local development is completely unaffected. No R2 (or any other) URL
+ * is hardcoded anywhere in this module.
  */
-export function demoVideoUrl(video) {
-  return `recordings/${encodeURIComponent(video)}`;
+export function demoCctvBaseUrl(env) {
+  const raw = env ? env.VITE_DEMO_CCTV_BASE_URL : undefined;
+  if (typeof raw !== 'string') return undefined;
+  const trimmed = raw.trim().replace(/\/+$/, '');
+  return trimmed ? trimmed : undefined;
+}
+
+/**
+ * The build-time value, resolved once. `import.meta.env` is injected by Vite
+ * and is `undefined` under plain `node --test`, so local and unit-test runs get
+ * no base and keep the previous behaviour.
+ */
+const BUILT_DEMO_BASE_URL = demoCctvBaseUrl(import.meta.env);
+
+/**
+ * Joins an optional external base with a site-relative path. With no base the
+ * relative path is returned unchanged, which is the local behaviour.
+ */
+function withDemoBase(baseUrl, relativePath) {
+  const suffix = relativePath.startsWith('/') ? relativePath : `/${relativePath}`;
+  return baseUrl ? `${baseUrl}${suffix}` : relativePath;
+}
+
+/**
+ * Served URL for a recorded dataset clip. The clips live in public/recordings/
+ * (byte-for-byte copies of the original MP4s) and are served by the app itself.
+ *
+ * `baseUrl` defaults to the build-time VITE_DEMO_CCTV_BASE_URL, so once the
+ * clips are on object storage no call site has to change.
+ */
+export function demoVideoUrl(video, baseUrl = BUILT_DEMO_BASE_URL) {
+  return withDemoBase(baseUrl, `recordings/${encodeURIComponent(video)}`);
 }
 
 /**
  * Served URL for a recorded demo CCTV clip. The clips are the ORIGINAL demo
- * CCTV MP4s under data/demo_cctv/<route_id>/<source_video>; the Vite dev /
- * preview server streams them at /demo-cctv/<route_id>/<source_video> (no
- * copies are made into public/ or dist/).
+ * CCTV MP4s under data/demo_cctv/<route_id>/<source_video>.
+ *
+ * Locally the Vite dev / preview server streams them at
+ * /demo-cctv/<route_id>/<source_video> (no copies are made into public/ or
+ * dist/). A deployed static build has no Vite server, so the clips must be
+ * hosted externally — set VITE_DEMO_CCTV_BASE_URL for that. The route folder and
+ * filename are preserved either way.
  */
-export function demoCctvVideoUrl(routeId, sourceVideo) {
-  return `/demo-cctv/${encodeURIComponent(routeId || '')}/${encodeURIComponent(sourceVideo || '')}`;
+export function demoCctvVideoUrl(routeId, sourceVideo, baseUrl = BUILT_DEMO_BASE_URL) {
+  const routeFolder = encodeURIComponent(routeId || '');
+  const encodedFile = encodeURIComponent(sourceVideo || '');
+  return withDemoBase(baseUrl, `/demo-cctv/${routeFolder}/${encodedFile}`);
 }
 
 /**
